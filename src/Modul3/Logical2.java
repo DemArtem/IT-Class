@@ -22,7 +22,7 @@ public class Logical2 {
         boolean b4 = (a!=b)&&(b!=c);
         System.out.println(b4);
 
-        boolean b5 = (a/2)&&(b!/2)&&(c<0);
+        boolean b5 = (a%2==0)&&(b%2!=0)&&(c<0);
         System.out.println(b5);
     }
 }
