@@ -6,6 +6,7 @@ package Modul3;
         г) каждое из чисел X, Y, Z отрицательное;
         д) только одно из чисел X, Y и Z кратно пяти;
         е) хотя бы одно из чисел X, Y, Z больше 100.
+       https://school272.ucoz.ru/TeachersWorks/Kononov/sbornik_zadach_po_programmiroaniyu.pdf
 */
 public class L4 {
     public static void main(String[] args) {
