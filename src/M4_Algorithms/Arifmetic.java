@@ -58,5 +58,13 @@ public class Arifmetic {
         double y = 30;
         n=3;
         System.out.println((n-1)*y+x);
+
+        //10
+        double z = 0.9;
+        n=50;
+        System.out.println((int)Math.floor((z*n-x)/y+1));
+
+        x = -1.5;
+        System.out.println(Math.round(x)+" "+Math.floor(x)+" "+Math.ceil(x)+" "+(int)x);
     }
 }
