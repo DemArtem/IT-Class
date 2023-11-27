@@ -1,4 +1,4 @@
-package Modul2;
+package M2_Primitive;
 
 public class HowCalculaters {
     public static void main(String[] args) {

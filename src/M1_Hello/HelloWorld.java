@@ -1,4 +1,4 @@
-package Modul1;
+package M1_Hello;
 
 public class HelloWorld {
     public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package Modul1;
-
-import javax.swing.*;
+package M1_Hello;
 
 public class HelloSwing {
     public static void main(String[] args) {

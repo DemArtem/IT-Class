@@ -1,4 +1,4 @@
-package Modul2;
+package M2_Primitive;
 
 public class Assignments {
     public static void main(String[] args) {

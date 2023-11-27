@@ -1,8 +1,4 @@
-package Modul1;
-
-import Modul1.HelloSwing;
-import Modul1.HelloWorld;
-import Modul1.helloname;
+package M1_Hello;
 
 public class HelloAll {
     public static void main(String[] args) {

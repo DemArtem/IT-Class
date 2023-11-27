@@ -1,4 +1,4 @@
-package Modul3;
+package M3_Logical;
 
 public class Logical {
     public static void main(String[] args) {

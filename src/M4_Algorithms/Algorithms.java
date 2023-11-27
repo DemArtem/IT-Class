@@ -1,4 +1,4 @@
-package Modul5;
+package M4_Algorithms;
 
 public class Algorithms {
     public static void main(String[] args) {
