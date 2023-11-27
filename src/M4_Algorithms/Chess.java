@@ -13,5 +13,10 @@ public class Chess {
         if (Math.abs(x1-x2)==Math.abs(y1-y2))
             System.out.println(true);
         else System.out.println(false);
+
+        //queen
+        if ((x1==x2 || y1==y2) || (Math.abs(x1-x2)==Math.abs(y1-y2)))
+            System.out.println(true);
+        else System.out.println(false);
     }
 }
