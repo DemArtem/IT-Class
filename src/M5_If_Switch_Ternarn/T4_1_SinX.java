@@ -1,4 +1,4 @@
-package M5_If_Switch;
+package M5_If_Switch_Ternarn;
 /*
 Рассчитать значение у при заданном значении х:
 2

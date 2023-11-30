@@ -1,4 +1,4 @@
-package M5_If_Switch;
+package M5_If_Switch_Ternarn;
 
 public class IncrementDecrement {
     public static void main(String[] args) {

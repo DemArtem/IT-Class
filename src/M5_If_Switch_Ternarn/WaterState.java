@@ -1,4 +1,4 @@
-package M5_If_Switch;
+package M5_If_Switch_Ternarn;
 //состояния воды в зависимости от температуры
 import java.util.Scanner;
 
