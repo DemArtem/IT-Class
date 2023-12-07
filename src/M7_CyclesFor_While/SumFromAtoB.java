@@ -1,4 +1,4 @@
-package M7_CyclesFor;
+package M7_CyclesFor_While;
 //5.27г) сумму всех целых чисел от a до b (значения a и b вводятся с клавиатуры;
 //b a).
 import java.util.Scanner;

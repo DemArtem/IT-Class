@@ -1,4 +1,4 @@
-package M7_CyclesFor;
+package M7_CyclesFor_While;
 
 import java.util.Scanner;
 

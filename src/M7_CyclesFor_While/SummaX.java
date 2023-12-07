@@ -1,4 +1,4 @@
-package M7_CyclesFor;
+package M7_CyclesFor_While;
 //5.37
 //Вычислить сумму
 //2 3 4 11 2 3 10 1 ...
