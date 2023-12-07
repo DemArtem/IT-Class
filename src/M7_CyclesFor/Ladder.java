@@ -1,4 +1,4 @@
-package M6_Cycles;
+package M7_CyclesFor;
 
 public class Ladder {
     public static void main(String[] args) {
