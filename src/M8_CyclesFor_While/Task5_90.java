@@ -12,6 +12,7 @@ public class Task5_90 {
         }
         System.out.println(sum);
 
+
         /*
         //вычислить 5!
         int fact = 1;
