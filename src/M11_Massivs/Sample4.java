@@ -7,7 +7,7 @@ public class Sample4 {
     public static void main(String[] args) {
         int[] arr = {1,1,2,1,3,0,0};
         int length = 1;
-        for (int i=1; i<arr.length; i++){
+        for (int i=1; i<arr.length; i++                                                                                                                                                                                                                                                                                                                             ){
             boolean isUnique = true;
             for (int j=0; j<i; j++)
                 if (arr[i]==arr[j]) isUnique = false;
