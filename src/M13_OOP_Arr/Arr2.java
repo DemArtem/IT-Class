@@ -1,4 +1,4 @@
-package M13_;
+package M13_OOP_Arr;
 
 import java.util.Arrays;
 
@@ -21,7 +21,7 @@ public class Arr2 {
         return true;
     }
 
-    //определить количество простых делителей числа
+   //определить количество простых делителей числа
     static int getCount(int num){
         int count = 0;
         double s = Math.sqrt(num);
