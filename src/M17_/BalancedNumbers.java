@@ -3,7 +3,7 @@ package M17_;
 Сбалансированные числа: сумма цифр слева от середины равна сумме цифр справа от середины.
 Вывести первые 10 4-значных сбалансированных чисел.
  */
-public class Task1 {
+public class BalancedNumbers {
     public static void main(String[] args) {
         int count = 0;
         int number = 1000; // Начинаем с 4-значного числа
@@ -34,6 +34,5 @@ public class Task1 {
 
         // Проверяем сбалансированность числа
         return leftSum == rightSum;
-
     }
 }
