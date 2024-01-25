@@ -1,8 +1,6 @@
 package M15_Strings;
 
-import java.util.Arrays;
-
-public class String3 {
+public class Repeat {
     public static void main(String[] args) {
         String s = "Посчитать количество повторяющихся символов в строке";
         // Посчитать количество уникальных символов

@@ -2,34 +2,43 @@ package M15_Strings;
 
 import java.util.Arrays;
 
-public class Strings {
+public class StringsMethods {
     public static void main(String[] args) {
+        //узнать хэш-код
         String s;
         s = "string 1";
         System.out.println(s.hashCode());
         s = "string 2";
         System.out.println(s.hashCode());
 
+        //узнать пустая ли строка
+        System.out.println(s.isEmpty());
+
+        //узнать длину строки
+        System.out.println(s.length());
+
+        //приведение char к int
         char c = '1';
         System.out.println((int)c);
 
-        //String s2 = new String("string 1");
-        //System.out.println("%d %d%n", s.hashCode(), s2.hashCode());
-
-        c = s.charAt(0); //выделить первый символ строки
+        //выделить "первый" символ строки
+        c = s.charAt(0);
         System.out.println(c);
 
+        //выделить последний символ
         s = "1234";
-        System.out.println(s.charAt(s.length()-1)); //выделить последний символ
+        System.out.println(s.charAt(s.length()-1));
 
+        //вывод через переменную
         char c1 = '2', c2 = '\u00B7', c3 = '\u03C0', c4 = '=', c5 = '1',
                 c6 = '8', c7 = '0', c8 = '\u00B0';
         s = ""+c1+c2+c3+c4+c5+c6+c7+c8;
         System.out.println(s);
 
+        //сравнение строк
         String s1 = "first", s2 = "second";
-        System.out.println(s1.equals(s2)); //сравнение строк
-        System.out.println(s1.compareTo(s2));
+        System.out.println(s1.equals(s2)); //true or false
+        System.out.println(s1.compareTo(s2)); //вычетание кода строк
 
         //проверить содержит ли строка только цифры
         String s3 = "12345e6";
@@ -70,7 +79,7 @@ public class Strings {
         //Извлечь из строки подстроку JRE
         s = "JDK vs JRE vs JVM";
         i = s.indexOf("JRE");
-        s2 = s.substring(i,i+"JRE".length());
+        s2 = s.substring(i, i+"JRE".length());
         System.out.println(s2);
 
         //Удалить все скобки из выражения

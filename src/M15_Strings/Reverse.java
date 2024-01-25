@@ -1,6 +1,6 @@
 package M15_Strings;
 
-public class String4 {
+public class Reverse {
     public static void main(String[] args) {
         String world = "world";
         StringBuilder sb = new StringBuilder(world);
