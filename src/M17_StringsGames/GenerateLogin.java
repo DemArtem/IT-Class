@@ -1,4 +1,4 @@
-package M17_;
+package M17_StringsGames;
 
 import java.util.Random;
 

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="github.javadev.moneytostr" type="repository">
+    <properties maven-id="com.github.javadev:moneytostr:1.21" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/javadev/moneytostr/1.21/moneytostr-1.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
