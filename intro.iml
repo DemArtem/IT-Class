@@ -7,5 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="number2words-0.2" level="project" />
+    <orderEntry type="library" name="github.javadev.moneytostr" level="project" />
+    <orderEntry type="library" name="invitrode-12e5d68" level="project" />
+    <orderEntry type="library" name="whelk-hy-phen-a-tion-0.1.14" level="project" />
   </component>
 </module>
