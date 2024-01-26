@@ -1,4 +1,4 @@
-package M17_StringsGames;
+package IT_Class.M17_StringsGames;
 
 import com.github.moneytostr.MoneyToStr;
 import org.efaps.number2words.Converter;

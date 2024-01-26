@@ -1,4 +1,4 @@
-package M17_StringsGames;
+package IT_Class.M17_StringsGames;
 
 public class BouncedNumbers1 {
     public static void main(String[] args) {

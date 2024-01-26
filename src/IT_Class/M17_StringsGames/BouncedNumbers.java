@@ -1,8 +1,8 @@
-package M17_StringsGames;
-/*
+package IT_Class.M17_StringsGames;
+    /*
 Прыгающие числа: соседние цифры отличаются на 1.
 Вывести первые 10 чисел Дизариума (после 100).
-*/
+ */
 public class BouncedNumbers {
     public static void main(String[] args) {
         int number = 100;

@@ -1,4 +1,4 @@
-package M17_StringsGames;
+package IT_Class.M17_StringsGames;
 
 import java.util.Arrays;
 

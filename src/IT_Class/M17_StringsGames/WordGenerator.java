@@ -1,4 +1,4 @@
-package M17_StringsGames;
+package IT_Class.M17_StringsGames;
 
 /*
 Генерация слов, похожих на английские
@@ -15,3 +15,4 @@ public class WordGenerator {
             System.out.println(generator.newWord(6));
     }
 }
+

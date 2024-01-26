@@ -1,4 +1,4 @@
-package M17_StringsGames;
+package IT_Class.M17_StringsGames;
 /*
 Alice and Bob are playing game.
 Each of them have some vocabulary with 4-letter words.
