@@ -1,4 +1,4 @@
-package IT_Class.M14_Sort;
+package IT_Class.M13_Arr_Sort.Sort;
 /*
 1. Вывести все двухзначные числа,
 которые делятся на 3, но не делятся на 5

@@ -1,4 +1,4 @@
-package IT_Class.M14_Arrays2D;
+package IT_Class.M14_Arrays2D_Games.Arrays2D;
 
 public class Task25 {
     public static void main(String[] args) {

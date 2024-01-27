@@ -1,4 +1,4 @@
-package IT_Class.M14_Sort;
+package IT_Class.M13_Arr_Sort.Sort;
 
 import java.util.Random;
 

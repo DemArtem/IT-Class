@@ -1,6 +1,6 @@
-package IT_Class.M14_Sort;
+package IT_Class.M13_Arr_Sort.Sort;
 
-public class ArraysSortQuick extends ArraysSort{
+public class ArraysSortQuick extends ArraysSort {
     public static int RUN = 32;
 
     public static void main(String[] args) {

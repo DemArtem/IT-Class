@@ -1,4 +1,4 @@
-package IT_Class.M13_OOP_Arr;
+package IT_Class.M13_Arr_Sort.Arr;
 
 import java.util.Arrays;
 

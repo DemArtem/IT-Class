@@ -1,4 +1,4 @@
-package IT_Class.M14_Games;
+package IT_Class.M14_Arrays2D_Games.Games;
 
 import java.util.ArrayList;
 import java.util.Random;
