@@ -8,8 +8,27 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="number2words-0.2" level="project" />
-    <orderEntry type="library" name="github.javadev.moneytostr" level="project" />
-    <orderEntry type="library" name="invitrode-12e5d68" level="project" />
     <orderEntry type="library" name="whelk-hy-phen-a-tion-0.1.14" level="project" />
+    <orderEntry type="library" name="number2words-0.2" level="project" />
+    <orderEntry type="library" name="invitrode-2.0.2" level="project" />
+    <orderEntry type="library" name="moneytostr-1.21" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
