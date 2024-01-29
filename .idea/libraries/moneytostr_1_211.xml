@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="invitrode-2.0.2">
+  <library name="moneytostr-1.211">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../libr/invitrode-2.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../moneytostr-1.21.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

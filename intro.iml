@@ -8,10 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="number2words-0.2" level="project" />
-    <orderEntry type="library" name="whelk-hy-phen-a-tion-0.1.14" level="project" />
-    <orderEntry type="library" name="number2words-0.2" level="project" />
-    <orderEntry type="library" name="invitrode-2.0.2" level="project" />
-    <orderEntry type="library" name="moneytostr-1.21" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -30,5 +26,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="invitrode-12e5d68" level="project" />
+    <orderEntry type="library" name="moneytostr-1.211" level="project" />
+    <orderEntry type="library" name="number2words-0.21" level="project" />
+    <orderEntry type="library" name="whelk-hy-phen-a-tion-0.1.141" level="project" />
   </component>
 </module>
