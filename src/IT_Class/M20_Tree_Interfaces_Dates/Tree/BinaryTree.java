@@ -1,4 +1,4 @@
-package IT_Class.M_20.Tree;
+package IT_Class.M20_Tree_Interfaces_Dates.Tree;
 
 public class BinaryTree {
     public static void main(String[] args) {
@@ -11,7 +11,14 @@ public class BinaryTree {
         B.setLeft(D); B.setRight(E);
 
         Tree tree = new Tree(A);
+
         tree.preOrder(A);
+        System.out.println("");
+
+        tree.postOrder(A);
+        System.out.println("");
+
+        tree.inOrder(A);
     }
 }
 
@@ -49,7 +56,7 @@ class Node{
     }
 }
 
-class Tree{
+class Tree {
     private Node root = null;
 
     public Tree(Node root) {
@@ -57,11 +64,24 @@ class Tree{
     }
 
     //Прямой, Обратный, Симметричный (preOrder, postOrder, inOrder)
-    public void preOrder(Node node){
-        System.out.println(node.getKey());
-        if (node.getLeft()!=null) preOrder(node.getLeft());
-        if (node.getRight()!=null) preOrder(node.getRight());
+    public void preOrder(Node node) {
+        System.out.print(node.getKey());
+        if (node.getLeft() != null) preOrder(node.getLeft());
+        if (node.getRight() != null) preOrder(node.getRight());
+    }
+
+    public void postOrder(Node node) {
+
+        if (node.getLeft() != null) preOrder(node.getLeft());
+        if (node.getRight() != null) preOrder(node.getRight());
+        System.out.print(node.getKey());
+    }
+
+    public void inOrder(Node node) {
+
+        if (node.getLeft() != null) preOrder(node.getLeft());
+        System.out.print(node.getKey());
+        if (node.getRight() != null) preOrder(node.getRight());
     }
 }
-
 
