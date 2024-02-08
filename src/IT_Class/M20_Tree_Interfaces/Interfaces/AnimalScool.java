@@ -1,4 +1,4 @@
-package IT_Class.M20_Tree_Interfaces_Dates.Interfaces;
+package IT_Class.M20_Tree_Interfaces.Interfaces;
 //https://training.epam.com/static/news/Books/Ihar_Blinou.Java.from.EPAM.v2.2021.pdf
 import java.util.ArrayList;
 import java.util.List;

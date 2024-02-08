@@ -1,4 +1,4 @@
-package IT_Class.M20_Tree_Interfaces_Dates.Tree;
+package IT_Class.M20_Tree_Interfaces.Tree;
 
 public class BinaryTree {
     public static void main(String[] args) {

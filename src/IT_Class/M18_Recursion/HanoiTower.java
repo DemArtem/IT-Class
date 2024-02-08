@@ -1,4 +1,4 @@
-package IT_Class.M20_Tree_Interfaces_Dates;
+package IT_Class.M18_Recursion;
 public class HanoiTower {
     /*
 Рекурсивно решаем задачу «перенести башню из n−1 диска на 2-й стержень».
