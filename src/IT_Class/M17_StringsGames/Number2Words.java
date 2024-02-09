@@ -1,5 +1,5 @@
 package IT_Class.M17_StringsGames;
-
+/*
 import com.github.moneytostr.MoneyToStr;
 import org.efaps.number2words.Converter;
 import org.efaps.number2words.IConverter;
@@ -15,3 +15,4 @@ public class Number2Words {
         System.out.println(moneyToStr.convert(777.77D));
     }
 }
+ */

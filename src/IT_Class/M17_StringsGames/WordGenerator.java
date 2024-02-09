@@ -7,7 +7,7 @@ package IT_Class.M17_StringsGames;
     <artifactId>invitrode</artifactId>
     <version>12e5d68</version>
 </dependency>
- */
+
 public class WordGenerator {
     public static void main(String[] args) {
         com.maximeroussy.invitrode.WordGenerator generator = new com.maximeroussy.invitrode.WordGenerator();
@@ -15,4 +15,6 @@ public class WordGenerator {
             System.out.println(generator.newWord(6));
     }
 }
+
+ */
 
