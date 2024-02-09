@@ -7,7 +7,7 @@ import java.util.List;
 public class CoinSubset {
     public static void main(String[] args) {
         double[] coins = {0.1, 0.2, 0.5, 1, 2};
-        double targetSum = 2;
+        double targetSum = 2.2;
 
         List<Double> subset = new ArrayList<>();
         findCoinSubset(coins, targetSum, subset, 0);
