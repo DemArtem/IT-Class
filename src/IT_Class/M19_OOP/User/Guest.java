@@ -1,4 +1,6 @@
-package IT_Class.M19_OOP;
+package IT_Class.M19_OOP.User;
+
+import IT_Class.M19_OOP.User.User;
 
 class Guest extends User {
 

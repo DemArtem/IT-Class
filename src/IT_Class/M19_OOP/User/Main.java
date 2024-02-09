@@ -1,4 +1,4 @@
-package IT_Class.M19_OOP;
+package IT_Class.M19_OOP.User;
 
 import java.util.LinkedList;
 import java.util.List;

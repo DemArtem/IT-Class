@@ -1,6 +1,10 @@
-package IT_Class.M19_OOP;
+package IT_Class.M19_OOP.Student;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /*
 1. Student: id, Фамилия, Имя, Отчество, Дата рождения, Адрес, Телефон,
 Факультет, Курс, Группа.
@@ -10,7 +14,7 @@ b) списки студентов для каждого факультета и
 c) список студентов, родившихся после заданного года;
 d) список учебной группы
  */
-public class HomeWork_StudentSort {
+public class StudentSort {
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
         students.add(new Student("3Иван", "1Иванов", 2));
@@ -55,45 +59,6 @@ public class HomeWork_StudentSort {
         for (Student student: students)
             System.out.println(student.toString());
     }
+
 }
 
-class Student implements Comparable<Student> {
-    private String name;
-    private String surname;
-    private int grade;
-
-    public Student(String name, String surname, int grade) {
-
-        this.name
-                = name;
-        this.surname = surname;
-        this.grade = grade;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", grade=" + grade +
-                '}';
-    }
-
-    //сортировка по фамилии
-    @Override
-    public int compareTo(Student o) {
-        return  this.surname.compareTo(o.surname);
-    }
-}
