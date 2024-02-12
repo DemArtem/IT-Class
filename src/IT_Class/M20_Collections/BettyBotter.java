@@ -1,4 +1,4 @@
-package IT_Class.M20_Collections.BettyBotter;
+package IT_Class.M20_Collections;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ public class BettyBotter {
         Set<String> set = new TreeSet<>(); //сортировка с использ натурального порядка
         StringBuilder sb = new StringBuilder();
         String s = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("src/IT_Class/M20_Collections/BettyBotter/betty"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/_text/betty"))) {
             do{
                 s= br.readLine();
                 sb.append(s);

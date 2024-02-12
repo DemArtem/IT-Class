@@ -29,7 +29,7 @@ class DrawPane extends JPanel {
     int x, y; //Координаты начальной точки
 
     DrawPane() throws IOException {
-        File input = new File("src/images/flower1.png");
+        File input = new File("src/_image/flower1.png");
         image = ImageIO.read(input);
         addMouseListener(new MouseAdapter() {
             @Override
