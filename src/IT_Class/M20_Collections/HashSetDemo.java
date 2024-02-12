@@ -15,5 +15,19 @@ public class HashSetDemo {
             hashSet.add(number);
         }
         System.out.println(Arrays.toString(hashSet.toArray()));
+
+        //выводим список чисел в конце
+        hashSet.forEach(System.out::println);
+
+//        Iterator value = hashSet.iterator();
+//        int i = 0;
+//        while (value.hasNext() && i<3) {     //можно вывести часть элементов
+//            System.out.println(value.next());
+//            i++;
+//        }
+
+//        for (Integer i:hashSet)
+//            System.out.println(i);
+//        hashSet.forEach(System.out::println);
     }
 }
