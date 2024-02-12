@@ -1,5 +1,7 @@
 package IT_Class.M11_OOP;
 
+import IT_Class.M11_OOP.Variety;
+
 class Apple {
 
     private double weight;
