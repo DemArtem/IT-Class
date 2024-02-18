@@ -21,8 +21,6 @@ public class Main {
         students.add(new Student("2Николай", "2Петров", 3));
         students.add(new Student("1Петр", "3Сидоров", 1));
 
-        Collections.sort(students);
-
         //сортировка по Фамилии
         System.out.println("сортировка по Фамилии:");
         for (Student student:students)

@@ -1,6 +1,6 @@
 package HomeWorks.HW12_OOP.Students;
 
-public class Student implements Comparable<Student> {
+public class Student {
     private String name;
     private String surname;
     private int grade;
@@ -33,9 +33,4 @@ public class Student implements Comparable<Student> {
                 '}';
     }
 
-    //сортировка по фамилии
-    @Override
-    public int compareTo(Student o) {
-        return this.surname.compareTo(o.surname);
-    }
 }
