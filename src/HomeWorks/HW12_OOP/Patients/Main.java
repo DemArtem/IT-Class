@@ -15,6 +15,7 @@ b) список пациентов, номер медицинской карты
  */
 public class Main {
     public static void main(String[] args) {
+
         List<Patient> patients = new ArrayList<>();
         patients.add(new Patient("Александр", "Иванов", 22564, "Аутоиммунный гепатит"));
         patients.add(new Patient("Игорь", "Петров", 12896,"Болезнь Рейно"));

@@ -16,6 +16,7 @@ d) список учебной группы
  */
 public class Main {
     public static void main(String[] args) {
+
         List<Student> students = new ArrayList<>();
         students.add(new Student("3Иван", "1Иванов", 2));
         students.add(new Student("2Николай", "2Петров", 3));
