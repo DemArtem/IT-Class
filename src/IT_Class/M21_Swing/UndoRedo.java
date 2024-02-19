@@ -1,4 +1,4 @@
-package IT_Class.M20_Collections;
+package IT_Class.M21_Swing;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,14 +8,14 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
 
-public class UndoRedo_Swing extends JFrame {
+public class UndoRedo extends JFrame {
     List<String> commands = Arrays.asList("Open", "Edit", "Save", "Quit", "Copy",
             "Paste", "Insert", "Append", "Delete", "Move");
     private Deque<String> history = new ArrayDeque<>();
     private JList<String> list;
     private int index = 0;
 
-    public UndoRedo_Swing(){
+    public UndoRedo(){
         setVisible(true); //создаем окно
         setTitle("Commands History"); //заголовок
         setSize(600, 420); //размеры окна
@@ -67,6 +67,6 @@ public class UndoRedo_Swing extends JFrame {
     }
 
     public static void main(String[] args) {
-        UndoRedo_Swing undoRedo = new UndoRedo_Swing();
+        UndoRedo undoRedo = new UndoRedo();
     }
 }
