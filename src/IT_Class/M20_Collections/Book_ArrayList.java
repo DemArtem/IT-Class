@@ -1,4 +1,4 @@
-package IT_Class.M21_;
+package IT_Class.M20_Collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.List;
 //Вывести книги до определенного года издания
 //и в отсортированном порядке.
 
-public class Main {
+public class Book_ArrayList {
     public static void main(String[] args) {
 
         int comparisonYear = 2019;

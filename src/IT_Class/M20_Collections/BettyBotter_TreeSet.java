@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class BettyBotter {
+public class BettyBotter_TreeSet {
     public static void main(String[] args) {
         Set<String> set = new TreeSet<>(); //сортировка с использ натурального порядка
         StringBuilder sb = new StringBuilder();

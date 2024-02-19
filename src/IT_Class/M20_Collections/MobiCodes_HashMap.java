@@ -1,11 +1,11 @@
-package IT_Class.M21_;
+package IT_Class.M20_Collections;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class MobiCodes {
+public class MobiCodes_HashMap {
     public static void main(String[] args) {
         Map<Integer,String> map = new HashMap<>();
         map.put(24, "Белтелеком (Максифон)");

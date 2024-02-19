@@ -2,7 +2,7 @@ package IT_Class.M20_Collections;
 
 import java.util.Stack;
 
-public class CheckParenthesis {
+public class CheckParenthesis_Stack {
     public static void main(String[] args) {
 
         //String s = "(1*[2+3]);"; //Правильное выражение

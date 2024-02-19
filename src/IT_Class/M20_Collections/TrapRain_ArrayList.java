@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 //Сколько воды от дождя останется в неровностях, заданных массивом
-public class TrapRain {
+public class TrapRain_ArrayList {
     static Integer[] values = {0,1,0,0,2,1,0,1,3,2,1,2,1};
     static ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(values));
 

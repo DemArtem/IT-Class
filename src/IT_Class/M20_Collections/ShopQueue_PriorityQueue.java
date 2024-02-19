@@ -1,4 +1,4 @@
-package IT_Class.M21_;
+package IT_Class.M20_Collections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Queue;
 //в каждой корзине набор товаров определенной цены.
 //После обслуживания покупателя сумма в кассе увеличивается.
 //Без очереди обслуживаются ветераны, затем дети до 10 лет
-public class ShopQueue {
+public class ShopQueue_PriorityQueue {
     public static void main(String[] args) {
         Product water = new Product("Water", 2.10);
         Product bread = new Product("Bread", 2.40);

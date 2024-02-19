@@ -1,10 +1,10 @@
-package IT_Class.M21_;
+package IT_Class.M20_Collections;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 //Priority queue
-public class GiantTurnip {
+public class GiantTurnip_PriorityQueue {
     public static void main(String[] args) {
         Queue<Personage> queue = new PriorityQueue<>();
         queue.add(new Personage("turnip", 27));

@@ -4,7 +4,7 @@ import java.util.*;
 
 //Пользователь вводит натуральные числа, пока не введет ноль.
 //Программа выводит массив неповторяющихся чисел, введенных пользователем
-public class HashSetDemo {
+public class HashSet_TreeSet {
     public static void main(String[] args) {
         Set<Integer> hashSet = new TreeSet<>();
         Scanner scanner = new Scanner(System.in);

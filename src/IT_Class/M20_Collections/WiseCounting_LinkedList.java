@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class WiseCounting {
+public class WiseCounting_LinkedList {
     public static void main(String[] args) {
         Emperor emperor = new Emperor("Akbar");
         List<Courtier> courtiers  = new LinkedList<>();
