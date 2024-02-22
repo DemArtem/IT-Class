@@ -31,5 +31,7 @@
     <orderEntry type="library" name="number2words-0.21" level="project" />
     <orderEntry type="library" name="whelk-hy-phen-a-tion-0.1.141" level="project" />
     <orderEntry type="library" name="google.guava" level="project" />
+    <orderEntry type="library" name="jgoodies.common" level="project" />
+    <orderEntry type="library" name="jgoodies.forms" level="project" />
   </component>
 </module>
