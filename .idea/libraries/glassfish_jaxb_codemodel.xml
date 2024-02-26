@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="glassfish.jaxb.codemodel" type="repository">
+    <properties maven-id="org.glassfish.jaxb:codemodel:4.0.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/glassfish/jaxb/codemodel/4.0.4/codemodel-4.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

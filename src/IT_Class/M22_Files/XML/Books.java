@@ -11,7 +11,7 @@ import java.util.List;
 
 @XmlRootElement(name = "books")
 @XmlAccessorType( XmlAccessType.FIELD)
-public class Books implements Serializable
+public class Books
 {
     @XmlElement(name = "book")
     private List<Book> books = new ArrayList<>();

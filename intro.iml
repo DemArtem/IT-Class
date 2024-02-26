@@ -37,5 +37,7 @@
     <orderEntry type="library" name="javax.xml.bind.jaxb.api" level="project" />
     <orderEntry type="library" name="javax.activation" level="project" />
     <orderEntry type="library" name="glassfish.jaxb.runtime" level="project" />
+    <orderEntry type="library" name="glassfish.jaxb.codemodel" level="project" />
+    <orderEntry type="library" name="json" level="project" />
   </component>
 </module>
