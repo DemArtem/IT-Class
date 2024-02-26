@@ -1,4 +1,4 @@
-package IT_Class.M22_Files;
+package IT_Class.M22_Files.Text;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
