@@ -1,4 +1,4 @@
-package IT_Class.M10_Math_Graphic;
+package IT_Class.M21_Swing;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package IT_Class.M10_Math_Graphic;
+package IT_Class.M10_Math;
 //лабораторная 2/ Task2_7
 public class Task2_7 {
     public static void main(String[] args) {

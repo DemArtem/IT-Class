@@ -1,4 +1,4 @@
-package IT_Class.M10_Math_Graphic;
+package IT_Class.M10_Math;
 //лаб 2. дана послед чисел. выяснить явл ли послед симметричн простых чисел
 public class Task4_11 {
     public static void main(String[] args) {

@@ -12,7 +12,7 @@ public class BettyBotter_TreeSet {
         Set<String> set = new TreeSet<>(); //сортировка с использ натурального порядка
         StringBuilder sb = new StringBuilder();
         String s = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("src/_text/betty"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/_data/betty"))) {
             do{
                 s= br.readLine();
                 sb.append(s);

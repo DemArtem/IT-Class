@@ -1,4 +1,4 @@
-package IT_Class.M10_Math_Graphic;
+package IT_Class.M10_Math;
 
 public class Serie {
     public static void main(String[] args) {

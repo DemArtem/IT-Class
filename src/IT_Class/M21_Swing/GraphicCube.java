@@ -1,4 +1,4 @@
-package IT_Class.M08_For;
+package IT_Class.M21_Swing;
 
 import javax.swing.*;
 import java.awt.*;

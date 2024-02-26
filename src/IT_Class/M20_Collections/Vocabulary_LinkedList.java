@@ -15,7 +15,7 @@ public class Vocabulary_LinkedList {
 
         //Заполнить словарь из файла
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/_text/vocab.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/_data/vocab.txt"))) {
             String s;
             do {
                 s = br.readLine();
