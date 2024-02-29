@@ -1,4 +1,4 @@
-package IT_Class.M14_RegularExpressions;
+package IT_Class.M14_RegEx;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
