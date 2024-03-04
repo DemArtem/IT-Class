@@ -30,20 +30,22 @@ public class WiseOwl {
         System.out.println("The wisdom of the owl: " + owl.getWisdom());
     }
 }
+
 //Одиночка
-class Singleton{
+class Singleton {
     private static final Singleton instance = new Singleton();
 
     private int wisdom = 0;
-    private Singleton(){
+
+    private Singleton() {
         System.out.println("Once there was an old owl living in an oak");
     }
 
-    public static Singleton getInstance(){
+    public static Singleton getInstance() {
         return instance;
     }
 
-    public void incWisdom(){
+    public void incWisdom() {
         wisdom++;
     }
 
@@ -52,10 +54,11 @@ class Singleton{
     }
 }
 
-class Event{
+class Event {
     private final String name;
     private final Date date;
-    Event(String name, Date date){
+
+    Event(String name, Date date) {
         this.name = name;
         this.date = date;
     }
@@ -81,8 +84,9 @@ class Event{
     }
 }
 
-class VoiceFromOak{
+class VoiceFromOak {
     private boolean answer;
+
     public boolean isAnswer() {
         return answer;
     }
@@ -91,11 +95,11 @@ class VoiceFromOak{
         this.answer = answer;
     }
 
-    public void ask(){
+    public void ask() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Will you help (y/n)?");
         String str = scanner.next();
-        if (str.indexOf("y")==-1) setAnswer(true);
+        if (str.indexOf("y") == -1) setAnswer(true);
         else setAnswer(false);
     }
 }

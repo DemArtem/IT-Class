@@ -22,7 +22,8 @@ public class Mouthology {
         System.out.println(sailor.isCrocodilogy());
     }
 }
-class Person{
+
+class Person {
     private String profession = "";
     private boolean biology = false;
     private boolean ecology = false;
@@ -93,8 +94,10 @@ class Person{
         return mouthology;
     }
 
-    public class Builder{
-        private Builder(){}
+    public class Builder {
+        private Builder() {
+        }
+
         public Builder setProfession(String profession) {
             Person.this.profession = profession;
             return this;
@@ -159,7 +162,8 @@ class Person{
             Person.this.mouthology = mouthology;
             return this;
         }
-        public Person getPerson(){
+
+        public Person getPerson() {
             return Person.this;
         }
     }
