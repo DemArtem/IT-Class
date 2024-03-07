@@ -9,15 +9,12 @@ public class FantasyGame {
         Barracks humanBarracks = new HumanBarracks();
         Warrior warrior1 = humanBarracks.createWarrior();
         warrior1.attack();
-
     }
 }
 
 abstract class Barracks {
     public abstract Warrior createWarrior();
-
     public abstract Mage createMage();
-
     public abstract Archer createArcher();
 }
 
@@ -31,7 +28,6 @@ interface Mage{
 }
 
 class HumanWarrior implements Warrior{
-
     @Override
     public void attack() {
         System.out.println("The human warrior is attacking with sword");
