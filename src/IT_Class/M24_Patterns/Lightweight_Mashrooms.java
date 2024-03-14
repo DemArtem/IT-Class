@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //Lightweight легковес
-public class Mashrooms {
+public class Lightweight_Mashrooms {
     public static void main(String[] args) {
         Micelium micelium = new Micelium();
         System.out.println(micelium.getMushroom(MushroomType.Russula,1,1).toDetailString());

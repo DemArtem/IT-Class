@@ -1,9 +1,7 @@
 package IT_Class.M24_Patterns;
 
-import javax.sound.sampled.Line;
-
 //шаблон мост (bridge)
-public class LionAndHare {
+public class Bridge_LionAndHare {
     public static void main(String[] args) {
         Lion lion = new CleverLion();
         Hare hare = new CleverHare();

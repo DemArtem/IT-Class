@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 //структурные, поведенческие, порождающие
-public class WiseOwl {
+public class Singleton_WiseOwl {
     static Singleton owl;
     static VoiceFromOak voice;
 

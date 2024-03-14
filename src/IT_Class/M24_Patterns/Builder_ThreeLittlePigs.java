@@ -1,6 +1,6 @@
 package IT_Class.M24_Patterns;
 
-public class ThreeLittlePigs {
+public class Builder_ThreeLittlePigs {
     public static void main(String[] args) {
         Builder nifNif = new NifNif();
         Builder nafNaf = new NafNaf();

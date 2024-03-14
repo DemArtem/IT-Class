@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 //Абстрактная фабрика
-public class FantasyGame {
+public class AbstractFabric_FantasyGame {
     public static void main(String[] args) {
         //races: human, elf, ork
         //personages: warrior, archer, mage

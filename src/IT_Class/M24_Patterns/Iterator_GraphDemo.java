@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 import java.util.*;
-public class GraphDemo {
+public class Iterator_GraphDemo {
     public static void main(String[] args) {
         Graph graph = new Graph();
         graph.addVertex("Витебск");
@@ -27,7 +27,7 @@ public class GraphDemo {
             System.out.println(graphIterator.next());
     }
 }
-//Реализация графа взята сhttps://www.baeldung.com/java-graphs
+//Реализация графа взята с https://www.baeldung.com/java-graphs
 class Graph {
     private Map<String, List<String>> adjVertices = new HashMap<>();
 

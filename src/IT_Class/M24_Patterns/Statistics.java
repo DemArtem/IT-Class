@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Random;
 
-    //Вложенный статический класс
+//Вложенный статический класс
 public class Statistics {
     public static void main(String[] args) {
         int count = 10;

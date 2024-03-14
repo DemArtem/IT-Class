@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 //chain of resposibility
-public class RoosterAndBeanSeed {
+public class Chain_RoosterAndBeanSeed {
     public static void main(String[] args) {
         Hen hen = new Hen();
         Cow cow = new Cow();

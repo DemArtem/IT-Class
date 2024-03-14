@@ -1,6 +1,6 @@
 package IT_Class.M24_Patterns;
 //фабричный метод
-public class PoundOfButter {
+public class Fabric_PoundOfButter {
     public static void main(String[] args) {
         IProducer farmer = new Farmer();
         IProducer backer = new Backer();

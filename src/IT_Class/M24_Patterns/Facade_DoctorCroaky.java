@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Facade
-public class DoctorCroaky {
+public class Facade_DoctorCroaky {
     public static void main(String[] args) {
         Story.tellStory();
     }

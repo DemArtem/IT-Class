@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 //prototype (порождающий шаблон)
-public class SillyLittleMariam {
+public class Prototype_SillyLittleMariam {
     public static void main(String[] args) {
         Girl mariam = new Girl("Mariam");
         System.out.println(mariam.toString());

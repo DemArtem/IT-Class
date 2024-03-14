@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 //decorator (поведенческий шаблон)
-public class Shopping {
+public class Decorator_Shopping {
     public static void main(String[] args) {
         Man man = new Dressmaker(new Shoemaker(new Pedestrian()));
         man.walk();

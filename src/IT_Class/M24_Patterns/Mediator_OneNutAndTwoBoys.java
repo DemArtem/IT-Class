@@ -3,7 +3,7 @@ package IT_Class.M24_Patterns;
 import java.util.ArrayList;
 
 //Mediator Посредник
-public class OneNutAndTwoBoys {
+public class Mediator_OneNutAndTwoBoys {
     public static void main(String[] args) {
         TallBoy mediator = new TallBoy();
         Boy first = new LittleBoy(mediator);

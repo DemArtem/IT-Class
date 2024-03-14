@@ -1,7 +1,7 @@
 package IT_Class.M24_Patterns;
 
 //adapter pattern
-public class WellAndBucket {
+public class Adapter_WellAndBucket {
     public static void main(String[] args) {
         Well well = new DugWell();
         System.out.println(well.getWater());
