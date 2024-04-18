@@ -3,6 +3,8 @@ package IT_Class.M25_Multithreading;
 //Имеются два калькулятора, которые должны работать параллельно.
 //После того, как первый вывел сумму, он сообщает второму, что тот также может вывести сумму
 public class Summator2 {
+    public static Object object = new Object();
+
     public static void main(String[] args) throws InterruptedException {
         Calc calculator1 = new Calc();
         calculator1.setName("Calc 1");
