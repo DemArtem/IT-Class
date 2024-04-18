@@ -288,7 +288,7 @@ class Hotel
     static void bill(int rn,int rtype)
     {
         double amount=0;
-        String list[]={"Sandwich","Pasta","Noodles","Coke"};
+        String[] list ={"Sandwich","Pasta","Noodles","Coke"};
         System.out.println("\n*******");
         System.out.println(" Bill:-");
         System.out.println("*******");
