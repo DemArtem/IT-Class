@@ -1,15 +1,21 @@
-package IT_Class.M25_;
+package IT_Class.M25_Multithreading;
 
-public class RunnersSynchronized {
+public class RunnersSynchronized2 {
     public static void main(String[] args) {
         //Создать бегуна
         //Поместить бегуна на беговую дорожку
         Runner runner = new Runner();
+        Runner runner2 = new Runner();
         //Старт
-        runner.start(); //1
+        runner.start();
+        runner2.start();
+
+        runner.resumeProcess();
+        runner2.runProcess();
 
         System.out.println("Бег 1 с");
         runner.runProcess(); //Запустить
+        runner2.runProcess(); //1
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -23,8 +29,9 @@ public class RunnersSynchronized {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         System.out.println("Бег 1 с");
-        runner.resumeProcess(); //2-й комментарий. Продолжить движение после stop можно только с помощью нотификации
+        runner.resumeProcess();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -32,41 +39,44 @@ public class RunnersSynchronized {
         }
 
         System.out.println("Финиш");
-        runner.interrupt();  //1-й комментарий
+        runner.interrupt();
+        runner2.interrupt(); //2
     }
 
     static class Runner extends Thread {
         private volatile boolean paused = true;
-        public final Object lock = new Object(); //Объект для синхронизации
+        public Object lock = new Object(); //Объект для синхронизации
 
         @Override
-        public void run() {  //2
+        public void run() {
             int i = 0;
             while (!isInterrupted()) {
                 System.out.println("Runner " + Thread.currentThread().getName() + " is running, step: " + i);
-                waitProcess(); //3 Бегун сам себя залочил и ждет, кто возобновит его движение с помощью метода notifyAll
+                waitProcess(); //Бегун сам себя залочил и ждет, кто возобновит его движение с помощью метода notifyAll
                 i++;
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                 //e.printStackTrace();
-                    break;
+                break;
                 }
             }
-            //System.out.println("The runner "+Thread.currentThread().getName()+" finished...");
+
+        //System.out.println("The runner "+Thread.currentThread().getName()+" finished...");
         }
 
         public void waitProcess() {
             synchronized (lock) {
                 if (paused) {
                     try {
-                        lock.wait(); //4
+                        lock.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }
+
 
         public void resumeProcess() {
             synchronized (lock) {
@@ -85,4 +95,4 @@ public class RunnersSynchronized {
             paused = false;
         }
     }
-}
+} 

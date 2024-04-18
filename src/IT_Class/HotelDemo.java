@@ -1,4 +1,4 @@
-package IT_Class.M25_;
+package IT_Class;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+//Код на собеседование: найти и объяснить ошибки
 class Food implements Serializable
 {
     int itemno;
