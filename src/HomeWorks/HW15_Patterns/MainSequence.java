@@ -1,4 +1,4 @@
-package HomeWorks.HW16_Threads;
+package HomeWorks.HW15_Patterns;
 
 import java.util.Scanner;
 /*
