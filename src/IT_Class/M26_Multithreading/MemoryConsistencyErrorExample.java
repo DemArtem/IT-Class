@@ -4,7 +4,6 @@ public class MemoryConsistencyErrorExample {
     //Значение переменной, считанной потоком thread, не обновляется
     private static boolean sayHello = false;
     //private static volatile boolean sayHello = false;
-
     public static void main(String[] args) {
         Thread thread = new Thread(() -> {
             while(!sayHello) {}
