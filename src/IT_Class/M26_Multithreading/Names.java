@@ -1,4 +1,4 @@
-package IT_Class.M25_Multithreading;
+package IT_Class.M26_Multithreading;
 public class Names {
     public static String message;
     public static Object object = new Object();

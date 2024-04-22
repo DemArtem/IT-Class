@@ -1,4 +1,4 @@
-//Реализуйте метод ifPresent, аналогичный одноименному методу класса Optional и принимающий java.util.function.BiConsumer
+package IT_Class.M25_Generic;//Реализуйте метод ifPresent, аналогичный одноименному методу класса Optional и принимающий java.util.function.BiConsumer
 import java.util.function.BiConsumer;
 
 public class CustomOptional<T> {
