@@ -1,4 +1,4 @@
-package IT_Class.M27_Lambda;
+package IT_Class.M28_Lambda;
 
 import java.util.*;
 

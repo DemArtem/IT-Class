@@ -1,4 +1,4 @@
-package IT_Class.M27_Lambda;
+package IT_Class.M28_Lambda;
 
 interface Operationable {
     int calculate(int x, int y);

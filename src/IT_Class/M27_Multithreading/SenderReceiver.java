@@ -1,4 +1,4 @@
-package IT_Class.M26_Multithreading;
+package IT_Class.M27_Multithreading;
 
 import java.util.concurrent.ThreadLocalRandom;
 

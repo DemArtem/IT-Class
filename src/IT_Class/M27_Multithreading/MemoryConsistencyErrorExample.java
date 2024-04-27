@@ -1,4 +1,4 @@
-package IT_Class.M26_Multithreading;
+package IT_Class.M27_Multithreading;
 
 public class MemoryConsistencyErrorExample {
     //Значение переменной, считанной потоком thread, не обновляется

@@ -1,4 +1,4 @@
-package IT_Class.M26_Multithreading;
+package IT_Class.M27_Multithreading;
 
 public class RunnersSynchronized2 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package IT_Class.M27_Lambda;
+package IT_Class.M28_Lambda;
 
 public class Default implements Example{
     public static void main(String[] args) {

@@ -15,7 +15,7 @@ interface Well{
     double getWater();
 }
 
-class DugWell implements Well{
+class DugWell implements Well {
     protected double volume = 1000;
     @Override
     public double getWater() {

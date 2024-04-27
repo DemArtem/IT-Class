@@ -1,4 +1,4 @@
-package IT_Class.M26_Multithreading;
+package IT_Class.M27_Multithreading;
 //Имеются два калькулятора, которые должны работать параллельно.
 //После того, как первый вывел сумму, он сообщает второму, что тот также может вывести сумму
 public class Summator2 {
