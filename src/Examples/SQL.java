@@ -1,10 +1,6 @@
 package Examples;
 /*
---Database structure   .ddl
-create table mails(id integer primary key autoincrement, mail text);
-create table phones(id integer primary key autoincrement, phone text);
-create table mails_phones(id integer primary key autoincrement, mail_id int, phone_id int);
-alex говорит:--Database structure .ddl
+--Database structure .ddl
 create table mails(id integer primary key autoincrement, mail text);
 create table phones(id integer primary key autoincrement, phone text);
 create table mails_phones(id integer primary key autoincrement, mail_id int, phone_id int);
