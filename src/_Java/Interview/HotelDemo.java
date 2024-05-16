@@ -1,4 +1,4 @@
-package _Java.Examples;
+package _Java.Interview;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
