@@ -1,0 +1,21 @@
+{
+  "persons": [
+    {
+      "emails": [
+        "email: alex@gmail.com ",
+        "email: alex@rambler.ru ",
+        "email: alex@mail.ru "
+      ],
+      "phone": "+375331111111",
+      "name": "Алексей"
+    },
+    {
+      "emails": [
+        "email: alex2@gmail.com ",
+        "email: alex2@rambler.ru "
+      ],
+      "phone": "+375331111112",
+      "name": "Алекс"
+    }
+  ]
+}
