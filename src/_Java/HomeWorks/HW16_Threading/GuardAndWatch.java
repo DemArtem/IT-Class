@@ -1,4 +1,4 @@
-package _Java.HomeWorks.HW16_Multithreading;
+package _Java.HomeWorks.HW16_Threading;
 /*
 Два охранника попеременно стоят на посту по 12 часов.
 Пока один стоит на посту, другой спит. Когда срабатывает будильник,
