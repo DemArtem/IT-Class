@@ -8,13 +8,13 @@ drop table if exists university;
 
 create table university
 (
-    id integer primary key autoincrement,
+    id integer primary key auto_increment,
     name varchar(160)
 );
 
 create table student
 (
-    id integer primary key autoincrement,
+    id integer primary key auto_increment,
     surname varchar(60),
     name varchar(60),
     univ_id integer,
@@ -40,15 +40,14 @@ insert into student (surname, name, univ_id) values ('антипов', 'андр
 insert into student (surname, name, univ_id) values ('грачев', 'евгений', 4);
 insert into student (surname, name, univ_id) values ('попова', 'дарья', 4);
 
-on delete cascade
 create table student
 (
-    id integer primary key autoincrement,
+    id integer primary key auto_increment,
     surname varchar(60),
     name varchar(60),
     univ_id integer,
     foreign key (univ_id) references university (id)
-    --on delete RESTRICT on update RESTRICT
+    on delete RESTRICT on update RESTRICT
     --on delete SET NULL on update SET NULL
     --no action
     --set default
