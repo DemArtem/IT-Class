@@ -1,0 +1,5804 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+<title>Northwind sample database | YugabyteDB Docs</title>
+<meta name="generator" content="Hugo 0.89.1" />
+<meta name="description" content="Use the Northwind sample database to explore and learn YugabyteDB.">
+<link rel="canonical" href="https://docs.yugabyte.com/latest/sample-data/northwind/">
+<meta name="author" content="Team Yugabyte">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@yugabyte" />
+<meta property="og:url" content="https://docs.yugabyte.com/latest/sample-data/northwind/" />
+<meta property="og:title" content="Northwind sample database | YugabyteDB Docs" />
+<meta property="og:description" content="Use the Northwind sample database to explore and learn YugabyteDB." />
+<meta property="og:image" content="https://docs.yugabyte.com/images/og-image.jpg" />
+<meta name="apple-mobile-web-app-title" content="YugabyteDB Docs" />
+<meta property="og:type" content="website" />
+<meta property="og:app_id" content="342998679454500" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="shortcut icon" type="image/x-icon" href="https://docs.yugabyte.com/images/favicon.ico">
+<link rel="icon" type="image/x-icon" href="https://docs.yugabyte.com/images/favicon.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/brands.css" integrity="sha384-BKw0P+CQz9xmby+uplDwp82Py8x1xtYPK3ORn/ZSoe6Dk3ETP59WCDnX+fI1XCKK" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/js/bootstrap-hover-dropdown.js"></script>
+<script src="/js/jquery.serializejson.min.js"></script>
+<script src="/js/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.js"></script>
+<script src="/js/jquery.sticky-kit.min.js"></script>
+<script src="/js/site.js"></script>
+<script> !function(e,t,i){var r=e.bigPicture=e.bigPicture||[];if(!r.initialized)if(r.invoked)e.console&&console.error&&console.error("BigPicture.io snippet included twice.");else{r.invoked=!0,r.SNIPPET_VERSION=1.5,r.handler=function(e){if(void 0!==r.callback)try{return r.callback(e)}catch(e){}},r.eventList=["mousedown","mouseup","click","submit"],r.methods=["track","identify","page","group","alias","integration","ready","intelReady","consentReady","on","off"],r.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);return t.unshift(e),r.push(t),r}};for(var n=0;n<r.methods.length;n++){var o=r.methods[n];r[o]=r.factory(o)}r.getCookie=function(e){var i=("; "+t.cookie).split("; "+e+"=");return 2==i.length&&i.pop().split(";").shift()};var c=r.isEditor=function(){try{return e.self!==e.top&&(new RegExp("app"+i,"ig").test(t.referrer)||"edit"==r.getCookie("_bpr_edit"))}catch(e){return!1}}();r.init=function(n,o){if(r.projectId=n,r._config=o,!c)for(var a=0;a<r.eventList.length;a++)e.addEventListener(r.eventList[a],r.handler,!0);var s=t.createElement("script");s.async=!0;var d=c?"/editor/editor":"/public-"+n;s.src="//cdn"+i+d+".js",t.getElementsByTagName("head")[0].appendChild(s)}}}(window,document,".bigpicture.io"); bigPicture.init("1020");</script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('https://docs.yugabyte.com/fonts/icon.eot');
+        src: url('https://docs.yugabyte.com/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('https://docs.yugabyte.com/fonts/icon.woff')
+               format('woff'),
+             url('https://docs.yugabyte.com/fonts/icon.ttf')
+               format('truetype'),
+             url('https://docs.yugabyte.com/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+<link rel="stylesheet" href="/css/application.css">
+<link rel="stylesheet" type="text/css" href="/css/site.css?1636160895" />
+<link rel="stylesheet" href="/css/temporary.css">
+<link rel="stylesheet" href="https://docs.yugabyte.com/css/highlight/hemisu.css">
+<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700,800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+<style>
+      body, input {
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Inconsolata', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+<script src="/js/modernizr.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc-aside" class="palette-primary-orange palette-accent-amber">
+<div class="backdrop">
+<div class="backdrop-paper"></div>
+</div>
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+<div class="yb-header">
+<nav id="nav_bar" class="navbar navbar-expand-lg navbar-inverse d-print scrolled">
+<div class="container-fluid" class="d-flex">
+<a href="/" class="navbar-brand">
+<div alt="Yugabyte" class="nav-logo scrolled"></div>
+</a>
+<div class="navbar-search-small">
+<form class="search-container" action="/search/">
+<i class="fas fa-search search-icon"></i>
+<input class="form-control search-input" id="search-input" name="q" placeholder="Search YugabyteDB Docs">
+</form>
+<script>
+var urlParams = new URLSearchParams(window.location.search)
+if (urlParams.has('q')) {
+  $('#search-input').val(urlParams.get('q'))
+}
+</script>
+</div>
+<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+<i class="bar"></i>
+<i class="bar"></i>
+<i class="bar"></i>
+<span class="sr-only">
+Toggle navigation
+</span>
+</button>
+<div class="navbar-collapse collapse">
+<div class="flex-spacer"></div>
+<div class="navbar-text navbar-search-main">
+<form class="search-container" action="/search/">
+<i class="fas fa-search search-icon"></i>
+<input class="form-control search-input" id="search-input" name="q" placeholder="Search YugabyteDB Docs">
+</form>
+<script>
+var urlParams = new URLSearchParams(window.location.search)
+if (urlParams.has('q')) {
+  $('#search-input').val(urlParams.get('q'))
+}
+</script>
+</div>
+<div class="navbar-misc">
+<a href="https://www.yugabyte.com/slack" target="_blank" class="navbar-link-btn">
+<div id="download-button">
+<span class="social-link-text">Join us on</span>
+<img id="slack-logo" width="80" height="30" src="/images/slack-logo-full.svg" alt="YugabyteDB Community Slack" />
+</div>
+</a>
+<a href="https://github.com/yugabyte/yugabyte-db" target="_blank" class="navbar-link-btn">
+<span class="social-link-text">Star us on</span>
+<i class="fab fa-github"></i>
+</a>
+<div id="download-button">
+<a href="https://download.yugabyte.com/" target="_blank" class="btn cta-button">
+Get Started
+</a>
+</div>
+</div>
+<div class="navbar-misc mobile">
+<div>
+<a href="https://www.yugabyte.com/slack" target="_blank">
+<i class="fab fa-slack"></i> Slack
+</a>
+</div>
+<div>
+<a href="https://github.com/yugabyte/yugabyte-db" target="_blank">
+<i class="fab fa-github"></i> GitHub
+</a>
+</div>
+<div>
+<a href="https://download.yugabyte.com/" target="_blank">
+Get Started
+</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<div id="root">
+<div class="main-footer-layout">
+<div class="container-fluid">
+<main class="main">
+<div class="drawer">
+<nav aria-label="Navigation" id="side-navigation">
+<div class="scrollable">
+<div class="wrapper">
+<div class="toc">
+<div class="dropdown" id="version-switcher">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>
+v2.9 (latest)</strong>
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="/latest/"><strong>v2.9 (latest)</strong></a>
+<a class="dropdown-item" href="/stable/"><strong>v2.6 (stable)</strong></a>
+<a class="dropdown-item" href="/v2.4/"><strong>v2.4</strong> (earlier version)</a>
+<a class="dropdown-item" href="/v2.2/"><strong>v2.2</strong> (earlier version)</a>
+<a class="dropdown-item" href="/v2.1/"><strong>v2.1</strong> (earlier version)</a>
+<a class="dropdown-item" href="/v2.0/"><strong>v2.0</strong> (earlier version)</a>
+<a class="dropdown-item" href="/v1.3/"><strong>v1.3</strong> (earlier version)</a>
+</div>
+</div>
+<ul id="drawerMenu" class="menu-with-sections">
+<li>
+<a class="node-toggle" title="YUGABYTEDB CORE">
+YUGABYTEDB CORE
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Quick start" href="/latest/quick-start/">
+Quick start
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="1. Install YugabyteDB" href="/latest/quick-start/install/macos/">
+1. Install YugabyteDB
+</a>
+</li>
+<li>
+<a title="2. Create a local cluster" href="/latest/quick-start/create-local-cluster/linux/">
+2. Create a local cluster
+</a>
+</li>
+<li>
+<a title="3. Explore distributed SQL" href="/latest/quick-start/explore/ysql/">
+3. Explore distributed SQL
+</a>
+</li>
+<li>
+<a title="4. Build an application" href="/latest/quick-start/build-apps/">
+4. Build an application
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Java" href="/latest/quick-start/build-apps/java/ysql-jdbc/">
+Java
+</a>
+</li>
+<li>
+<a title="NodeJS" href="/latest/quick-start/build-apps/nodejs/ysql-pg/">
+NodeJS
+</a>
+</li>
+
+<li>
+<a title="Go" href="/latest/quick-start/build-apps/go/ysql-pq/">
+Go
+</a>
+</li>
+<li>
+<a title="Python" href="/latest/quick-start/build-apps/python/ysql-psycopg2/">
+Python
+</a>
+</li>
+<li>
+<a title="Ruby" href="/latest/quick-start/build-apps/ruby/ysql-pg/">
+Ruby
+</a>
+</li>
+<li>
+<a title="C#" href="/latest/quick-start/build-apps/csharp/ysql/">
+C#
+</a>
+</li>
+<li>
+<a title="PHP" href="/latest/quick-start/build-apps/php/ysql/">
+PHP
+</a>
+</li>
+<li>
+<a title="C&#43;&#43;" href="/latest/quick-start/build-apps/cpp/ysql/">
+C&#43;&#43;
+</a>
+</li>
+<li>
+<a title="C" href="/latest/quick-start/build-apps/c/ysql/">
+C
+</a>
+</li>
+<li>
+<a title="Scala" href="/latest/quick-start/build-apps/scala/ycql/">
+Scala
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Explore" href="/latest/explore/">
+Explore
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="YSQL vs PostgreSQL" href="/latest/explore/ysql-language-features/">
+YSQL vs PostgreSQL
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Schemas and Tables" href="/latest/explore/ysql-language-features/databases-schemas-tables/">
+Schemas and Tables
+</a>
+</li>
+<li>
+<a title="Data Types" href="/latest/explore/ysql-language-features/data-types/">
+Data Types
+</a>
+</li>
+<li>
+<a title="Data Manipulation" href="/latest/explore/ysql-language-features/data-manipulation/">
+Data Manipulation
+</a>
+</li>
+<li>
+<a title="Queries and Joins" href="/latest/explore/ysql-language-features/queries/">
+Queries and Joins
+</a>
+</li>
+<li>
+<a title="Expressions and Operators" href="/latest/explore/ysql-language-features/expressions-operators/">
+Expressions and Operators
+</a>
+</li>
+<li>
+<a title="Cursors" href="/latest/explore/ysql-language-features/cursor/">
+Cursors
+</a>
+</li>
+<li>
+<a title="Stored Procedures" href="/latest/explore/ysql-language-features/stored-procedures/">
+Stored Procedures
+</a>
+</li>
+<li>
+<a title="Triggers" href="/latest/explore/ysql-language-features/triggers/">
+Triggers
+</a>
+</li>
+<li>
+<a title="Table Partitioning" href="/latest/explore/ysql-language-features/partitions/">
+Table Partitioning
+</a>
+</li>
+<li>
+<a title="Tablespaces" href="/latest/explore/ysql-language-features/tablespaces/">
+Tablespaces
+</a>
+</li>
+<li>
+<a title="Views" href="/latest/explore/ysql-language-features/views/">
+Views
+</a>
+</li>
+<li>
+<a title="Savepoints" href="/latest/explore/ysql-language-features/savepoints/">
+Savepoints
+</a>
+</li>
+<li>
+<a title="Extensions" href="/latest/explore/ysql-language-features/extensions/">
+Extensions
+</a>
+</li>
+</ul>
+</li>
+
+<li>
+<a title="Fault tolerance" href="/latest/explore/fault-tolerance/macos/">
+Fault tolerance
+</a>
+</li>
+<li>
+<a title="Horizontal scalability" href="/latest/explore/linear-scalability/">
+Horizontal scalability
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Sharding Data" href="/latest/explore/linear-scalability/sharding-data/">
+Sharding Data
+</a>
+</li>
+<li>
+<a title="Scaling Transactions" href="/latest/explore/linear-scalability/scaling-transactions/">
+Scaling Transactions
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Transactions" href="/latest/explore/transactions/">
+Transactions
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Distributed Transactions" href="/latest/explore/transactions/distributed-transactions-ysql/">
+Distributed Transactions
+</a>
+</li>
+<li>
+<a title="Isolation Levels" href="/latest/explore/transactions/isolation-levels/">
+Isolation Levels
+</a>
+</li>
+<li>
+<a title="Explicit Locking" href="/latest/explore/transactions/explicit-locking/">
+Explicit Locking
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Indexes and Constraints" href="/latest/explore/indexes-constraints/">
+Indexes and Constraints
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Constraints" href="/latest/explore/indexes-constraints/constraints/">
+Constraints
+</a>
+</li>
+<li>
+<a title="Indexes" href="/latest/explore/indexes-constraints/indexes-1/">
+Indexes
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Cluster management" href="/latest/explore/cluster-management/">
+Cluster management
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Point-in-time recovery" href="/latest/explore/cluster-management/point-in-time-recovery-ycql/">
+Point-in-time recovery
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="JSON support" href="/latest/explore/json-support/jsonb-ysql/">
+JSON support
+</a>
+</li>
+<li>
+<a title="Multi-region deployments" href="/latest/explore/multi-region-deployments/">
+Multi-region deployments
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Sync replication (3&#43; regions)" href="/latest/explore/multi-region-deployments/synchronous-replication-ysql/">
+Sync replication (3&#43; regions)
+</a>
+</li>
+<li>
+<a title="Async Replication (2&#43; regions)" href="/latest/explore/multi-region-deployments/asynchronous-replication-ysql/">
+Async Replication (2&#43; regions)
+</a>
+</li>
+<li>
+<a title="Row-Level Geo-Partitioning" href="/latest/explore/multi-region-deployments/row-level-geo-partitioning/">
+Row-Level Geo-Partitioning
+</a>
+</li>
+<li>
+<a title="Read replicas" href="/latest/explore/multi-region-deployments/read-replicas-ycql/">
+Read replicas
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Query tuning" href="/latest/explore/query-1-performance/">
+Query tuning
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Introduction" href="/latest/explore/query-1-performance/query-tuning-intro/">
+Introduction
+</a>
+</li>
+<li>
+<a title="Get query statistics using pg_stat_statements" href="/latest/explore/query-1-performance/pg-stat-statements/">
+Get query statistics using pg_stat_statements
+</a>
+</li>
+<li>
+<a title="Viewing live queries with pg_stat_activity" href="/latest/explore/query-1-performance/pg-stat-activity/">
+Viewing live queries with pg_stat_activity
+</a>
+</li>
+<li>
+<a title="Analyzing queries with EXPLAIN" href="/latest/explore/query-1-performance/explain-analyze/">
+Analyzing queries with EXPLAIN
+</a>
+</li>
+<li>
+<a title="Optimizing YSQL queries using pg_hint_plan" href="/latest/explore/query-1-performance/pg-hint-plan/">
+Optimizing YSQL queries using pg_hint_plan
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Follower reads" href="/latest/explore/follower-reads/fr-ycql/">
+Follower reads
+</a>
+</li>
+<li>
+<a title="Security" href="/latest/explore/security/security/">
+Security
+</a>
+</li>
+<li>
+<a title="Observability" href="/latest/explore/observability/">
+Observability
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Grafana Dashboard" href="/latest/explore/observability/grafana-dashboard/macos/">
+Grafana Dashboard
+</a>
+</li>
+<li>
+<a title="Prometheus Integration" href="/latest/explore/observability/prometheus-integration/macos/">
+Prometheus Integration
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Develop" href="/latest/develop/">
+Develop
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+
+<li>
+<a title="Learn app development" href="/latest/develop/learn/">
+Learn app development
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="1. SQL vs NoSQL" href="/latest/develop/learn/sql-nosql/">
+1. SQL vs NoSQL
+</a>
+</li>
+<li>
+<a title="2. Data modeling" href="/latest/develop/learn/data-modeling-ycql/">
+2. Data modeling
+</a>
+</li>
+<li>
+<a title="3. Data types" href="/latest/develop/learn/data-types-ycql/">
+3. Data types
+</a>
+</li>
+<li>
+<a title="4. ACID transactions" href="/latest/develop/learn/acid-transactions-ycql/">
+4. ACID transactions
+</a>
+</li>
+<li>
+<a title="5. Aggregations" href="/latest/develop/learn/aggregations-ycql/">
+5. Aggregations
+</a>
+</li>
+<li>
+<a title="6. Batch operations" href="/latest/develop/learn/batch-operations-ycql/">
+6. Batch operations
+</a>
+</li>
+<li>
+<a title="7. Date and time" href="/latest/develop/learn/date-and-time-ysql/">
+7. Date and time
+</a>
+</li>
+<li>
+<a title="8. Strings and text" href="/latest/develop/learn/strings-and-text-ysql/">
+8. Strings and text
+</a>
+</li>
+
+<li>
+<a title="9. TTL for data expiration" href="/latest/develop/learn/ttl-data-expiration-ycql/">
+9. TTL for data expiration
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Real-world examples" href="/latest/develop/realworld-apps/">
+Real-world examples
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="E-Commerce app" href="/latest/develop/realworld-apps/ecommerce-app/">
+E-Commerce app
+</a>
+</li>
+<li>
+<a title="IoT fleet management" href="/latest/develop/realworld-apps/iot-spark-kafka-ksql/">
+IoT fleet management
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Explore sample apps" href="/latest/develop/explore-sample-apps/">
+Explore sample apps
+</a>
+</li>
+<li>
+<a title="Best practices" href="/latest/develop/best-practices-ycql/">
+Best practices
+</a>
+</li>
+<li>
+<a title="Cloud-native development" href="/latest/develop/gitdev/">
+Cloud-native development
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Codespaces" href="/latest/develop/gitdev/codespaces/">
+Codespaces
+</a>
+</li>
+<li>
+<a title="Gitpod" href="/latest/develop/gitdev/gitpod/">
+Gitpod
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Migrate" href="/latest/migrate/">
+Migrate
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Migration process overview" href="/latest/migrate/migration-process-overview/">
+Migration process overview
+</a>
+</li>
+<li>
+<a title="Migrate from PostgreSQL" href="/latest/migrate/migrate-from-postgresql/">
+Migrate from PostgreSQL
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+
+<li>
+<a title="Convert a PostgreSQL schema" href="/latest/migrate/migrate-from-postgresql/migrate-schema/">
+Convert a PostgreSQL schema
+</a>
+</li>
+<li>
+<a title="Migrate a PostgreSQL application" href="/latest/migrate/migrate-from-postgresql/migrate-application/">
+Migrate a PostgreSQL application
+</a>
+</li>
+<li>
+<a title="Export PostgreSQL data" href="/latest/migrate/migrate-from-postgresql/export-data/">
+Export PostgreSQL data
+</a>
+</li>
+<li>
+<a title="Prepare a cluster" href="/latest/migrate/migrate-from-postgresql/prepare-cluster/">
+Prepare a cluster
+</a>
+</li>
+<li>
+<a title="Import PostgreSQL data" href="/latest/migrate/migrate-from-postgresql/import-data/">
+Import PostgreSQL data
+</a>
+</li>
+<li>
+<a title="Verify Migration" href="/latest/migrate/migrate-from-postgresql/verify-migration/">
+Verify Migration
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Deploy" href="/latest/deploy/">
+Deploy
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Deployment checklist" href="/latest/deploy/checklist/">
+Deployment checklist
+</a>
+</li>
+<li>
+<a title="Manual deployment" href="/latest/deploy/manual-deployment/">
+Manual deployment
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="1. System configuration" href="/latest/deploy/manual-deployment/system-config/">
+1. System configuration
+</a>
+</li>
+<li>
+<a title="2. Install software" href="/latest/deploy/manual-deployment/install-software/">
+2. Install software
+</a>
+</li>
+<li>
+<a title="3. Start YB-Masters" href="/latest/deploy/manual-deployment/start-masters/">
+3. Start YB-Masters
+</a>
+</li>
+<li>
+<a title="4. Start YB-TServers" href="/latest/deploy/manual-deployment/start-tservers/">
+4. Start YB-TServers
+</a>
+</li>
+
+<li>
+<a title="5. Verify deployment" href="/latest/deploy/manual-deployment/verify-deployment/">
+5. Verify deployment
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Kubernetes" href="/latest/deploy/kubernetes/">
+Kubernetes
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Single-zone" href="/latest/deploy/kubernetes/single-zone/">
+Single-zone
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Open Source" href="/latest/deploy/kubernetes/single-zone/oss/helm-chart/">
+Open Source
+</a>
+</li>
+<li>
+<a title="Amazon EKS" href="/latest/deploy/kubernetes/single-zone/eks/helm-chart/">
+Amazon EKS
+</a>
+</li>
+<li>
+<a title="Google Kubernetes Engine" href="/latest/deploy/kubernetes/single-zone/gke/helm-chart/">
+Google Kubernetes Engine
+</a>
+</li>
+<li>
+<a title="Azure Kubernetes Service" href="/latest/deploy/kubernetes/single-zone/aks/helm-chart/">
+Azure Kubernetes Service
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Multi-zone" href="/latest/deploy/kubernetes/multi-zone/">
+Multi-zone
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Amazon EKS" href="/latest/deploy/kubernetes/multi-zone/eks/helm-chart/">
+Amazon EKS
+</a>
+</li>
+<li>
+<a title="Google Kubernetes Engine" href="/latest/deploy/kubernetes/multi-zone/gke/helm-chart/">
+Google Kubernetes Engine
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Multi-cluster" href="/latest/deploy/kubernetes/multi-cluster/">
+Multi-cluster
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Google Kubernetes Engine" href="/latest/deploy/kubernetes/multi-cluster/gke/helm-chart/">
+Google Kubernetes Engine
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Best practices" href="/latest/deploy/kubernetes/best-practices/">
+Best practices
+</a>
+</li>
+<li>
+<a title="Connect Clients" href="/latest/deploy/kubernetes/clients/">
+Connect Clients
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Docker" href="/latest/deploy/docker/docker-compose/">
+Docker
+</a>
+</li>
+<li>
+<a title="Public clouds" href="/latest/deploy/public-clouds/">
+Public clouds
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Amazon Web Services" href="/latest/deploy/public-clouds/aws/cloudformation/">
+Amazon Web Services
+</a>
+</li>
+<li>
+<a title="Google Cloud Platform" href="/latest/deploy/public-clouds/gcp/gcp-deployment-manager/">
+Google Cloud Platform
+</a>
+</li>
+<li>
+<a title="Microsoft Azure" href="/latest/deploy/public-clouds/azure/aks/">
+Microsoft Azure
+</a>
+</li>
+</ul>
+</li>
+
+<li>
+<a title="Multi-DC deployments" href="/latest/deploy/multi-dc/">
+Multi-DC deployments
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Three&#43; data center (3DC)" href="/latest/deploy/multi-dc/3dc-deployment/">
+Three&#43; data center (3DC)
+</a>
+</li>
+<li>
+<a title="Asynchronous Replication" href="/latest/deploy/multi-dc/async-replication/">
+Asynchronous Replication
+</a>
+</li>
+<li>
+<a title="Read replica clusters" href="/latest/deploy/multi-dc/read-replica-clusters/">
+Read replica clusters
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Benchmark" href="/latest/benchmark/">
+Benchmark
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="TPC-C" href="/latest/benchmark/tpcc-ysql/">
+TPC-C
+</a>
+</li>
+<li>
+<a title="sysbench" href="/latest/benchmark/sysbench-ysql/">
+sysbench
+</a>
+</li>
+<li>
+<a title="YCSB" href="/latest/benchmark/ycsb-jdbc/">
+YCSB
+</a>
+</li>
+<li>
+<a title="Key-value workload" href="/latest/benchmark/key-value-workload-ycql/">
+Key-value workload
+</a>
+</li>
+<li>
+<a title="Large datasets" href="/latest/benchmark/large-datasets-ycql/">
+Large datasets
+</a>
+</li>
+<li>
+<a title="Scalability" href="/latest/benchmark/scalability/">
+Scalability
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+
+<li>
+<a title="Scaling queries" href="/latest/benchmark/scalability/scaling-queries-ysql/">
+Scaling queries
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Resilience" href="/latest/benchmark/resilience/">
+Resilience
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Jepsen testing" href="/latest/benchmark/resilience/jepsen-testing-ysql/">
+Jepsen testing
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Performance Troubleshooting" href="/latest/benchmark/performance-troubleshooting/">
+Performance Troubleshooting
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Secure" href="/latest/secure/">
+Secure
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Security checklist" href="/latest/secure/security-checklist/">
+Security checklist
+</a>
+</li>
+<li>
+<a title="Enable Authentication" href="/latest/secure/enable-authentication/">
+Enable Authentication
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Enable User Authentication" href="/latest/secure/enable-authentication/ysql/">
+Enable User Authentication
+</a>
+</li>
+<li>
+<a title="Configure ysql_hba_conf_csv" href="/latest/secure/enable-authentication/ysql_hba_conf-configuration/">
+Configure ysql_hba_conf_csv
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Authentication Methods" href="/latest/secure/authentication/">
+Authentication Methods
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Password Authentication" href="/latest/secure/authentication/password-authentication/">
+Password Authentication
+</a>
+</li>
+<li>
+<a title="LDAP Authentication" href="/latest/secure/authentication/ldap-authentication-ysql/">
+LDAP Authentication
+</a>
+</li>
+<li>
+<a title="Host-Based Authentication" href="/latest/secure/authentication/host-based-authentication/">
+Host-Based Authentication
+</a>
+</li>
+<li>
+<a title="Trust Authentication" href="/latest/secure/authentication/trust-authentication/">
+Trust Authentication
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Role-Based Access Control" href="/latest/secure/authorization/">
+Role-Based Access Control
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Overview" href="/latest/secure/authorization/rbac-model/">
+Overview
+</a>
+</li>
+<li>
+<a title="Manage Users and Roles" href="/latest/secure/authorization/create-roles/">
+Manage Users and Roles
+</a>
+</li>
+<li>
+<a title="Grant Privileges" href="/latest/secure/authorization/ysql-grant-permissions/">
+Grant Privileges
+</a>
+</li>
+<li>
+<a title="Row-Level Security (RLS)" href="/latest/secure/authorization/row-level-security/">
+Row-Level Security (RLS)
+</a>
+</li>
+<li>
+<a title="Column-Level Security" href="/latest/secure/authorization/column-level-security/">
+Column-Level Security
+</a>
+</li>
+</ul>
+</li>
+
+<li>
+<a title="Encryption in Transit" href="/latest/secure/tls-encryption/">
+Encryption in Transit
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Create server certificates" href="/latest/secure/tls-encryption/server-certificates/">
+Create server certificates
+</a>
+</li>
+<li>
+<a title="Enable server-to-server encryption" href="/latest/secure/tls-encryption/server-to-server/">
+Enable server-to-server encryption
+</a>
+</li>
+<li>
+<a title="Enable client-to-server encryption" href="/latest/secure/tls-encryption/client-to-server/">
+Enable client-to-server encryption
+</a>
+</li>
+<li>
+<a title="Connect to Clusters" href="/latest/secure/tls-encryption/connect-to-cluster/">
+Connect to Clusters
+</a>
+</li>
+<li>
+<a title="TLS and authentication" href="/latest/secure/tls-encryption/tls-authentication/">
+TLS and authentication
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Encryption at rest" href="/latest/secure/encryption-at-rest/">
+Encryption at rest
+</a>
+</li>
+<li>
+<a title="Column-Level Encryption" href="/latest/secure/column-level-encryption/">
+Column-Level Encryption
+</a>
+</li>
+<li>
+<a title="Audit Logging" href="/latest/secure/audit-logging/">
+Audit Logging
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Configure Audit Logging" href="/latest/secure/audit-logging/audit-logging-ysql/">
+Configure Audit Logging
+</a>
+</li>
+<li>
+<a title="Session-Level Audit Logging" href="/latest/secure/audit-logging/session-audit-logging-ysql/">
+Session-Level Audit Logging
+</a>
+</li>
+<li>
+<a title="Object-Level Audit Logging" href="/latest/secure/audit-logging/object-audit-logging-ysql/">
+Object-Level Audit Logging
+</a>
+</li>
+</ul>
+</li>
+
+<li>
+<a title="Vulnerability disclosure policy" href="/latest/secure/vulnerability-disclosure-policy/">
+Vulnerability disclosure policy
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Manage" href="/latest/manage/">
+Manage
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Back up and restore" href="/latest/manage/backup-restore/">
+Back up and restore
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Back up data" href="/latest/manage/backup-restore/back-up-data/">
+Back up data
+</a>
+</li>
+<li>
+<a title="Restore data" href="/latest/manage/backup-restore/restore-data/">
+Restore data
+</a>
+</li>
+<li>
+<a title="Point-in-time recovery" href="/latest/manage/backup-restore/point-in-time-recovery/">
+Point-in-time recovery
+</a>
+</li>
+<li>
+<a title="Snapshot and restore data" href="/latest/manage/backup-restore/snapshot-ysql/">
+Snapshot and restore data
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Migrate data" href="/latest/manage/data-migration/">
+Migrate data
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Bulk import" href="/latest/manage/data-migration/ycql/bulk-import/">
+Bulk import
+</a>
+</li>
+<li>
+<a title="Bulk export" href="/latest/manage/data-migration/ycql/bulk-export/">
+Bulk export
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Change cluster configuration" href="/latest/manage/change-cluster-config/">
+Change cluster configuration
+</a>
+</li>
+
+<li>
+<a title="Diagnostics reporting" href="/latest/manage/diagnostics-reporting/">
+Diagnostics reporting
+</a>
+</li>
+<li>
+<a title="Upgrade a deployment" href="/latest/manage/upgrade-deployment/">
+Upgrade a deployment
+</a>
+</li>
+<li>
+<a title="Grow cluster" href="/latest/manage/grow-cluster/">
+Grow cluster
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Troubleshoot" href="/latest/troubleshoot/">
+Troubleshoot
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Troubleshooting" href="/latest/troubleshoot/overview/">
+Troubleshooting
+</a>
+</li>
+<li>
+<a title="Cluster level issues" href="/latest/troubleshoot/cluster/">
+Cluster level issues
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="YCQL connection issues" href="/latest/troubleshoot/cluster/connect-ycql/">
+YCQL connection issues
+</a>
+</li>
+<li>
+<a title="YEDIS connection Issues" href="/latest/troubleshoot/cluster/connect-yedis/">
+YEDIS connection Issues
+</a>
+</li>
+<li>
+<a title="Recover tserver/master" href="/latest/troubleshoot/cluster/recover_server/">
+Recover tserver/master
+</a>
+</li>
+<li>
+<a title="Replace a failed YB-TServer" href="/latest/troubleshoot/cluster/replace_tserver/">
+Replace a failed YB-TServer
+</a>
+</li>
+<li>
+<a title="Replace a failed YB-Master" href="/latest/troubleshoot/cluster/replace_master/">
+Replace a failed YB-Master
+</a>
+</li>
+<li>
+<a title="Manual remote bootstrap when a majority of peers fail" href="/latest/troubleshoot/cluster/replace_failed_peers/">
+Manual remote bootstrap when a majority of peers fail
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Node level issues" href="/latest/troubleshoot/nodes/">
+Node level issues
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Check servers" href="/latest/troubleshoot/nodes/check-processes/">
+Check servers
+</a>
+</li>
+<li>
+<a title="Inspect logs" href="/latest/troubleshoot/nodes/check-logs/">
+Inspect logs
+</a>
+</li>
+<li>
+<a title="System statistics" href="/latest/troubleshoot/nodes/check-stats/">
+System statistics
+</a>
+</li>
+<li>
+<a title="Disk failure" href="/latest/troubleshoot/nodes/recover-disk/">
+Disk failure
+</a>
+</li>
+<li>
+<a title="Common error messages" href="/latest/troubleshoot/nodes/trouble-common/">
+Common error messages
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Contribute" href="/latest/contribute/">
+Contribute
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Core database" href="/latest/contribute/core-database/">
+Core database
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Contribution checklist" href="/latest/contribute/core-database/checklist/">
+Contribution checklist
+</a>
+</li>
+<li>
+<a title="Build the source" href="/latest/contribute/core-database/build-from-src-macos/">
+Build the source
+</a>
+</li>
+<li>
+<a title="Configure a CLion project" href="/latest/contribute/core-database/clion-setup/">
+Configure a CLion project
+</a>
+</li>
+<li>
+<a title="Run the tests" href="/latest/contribute/core-database/run-unit-tests/">
+Run the tests
+</a>
+</li>
+<li>
+<a title="Coding style" href="/latest/contribute/core-database/coding-style/">
+Coding style
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+ <li>
+<a class="node-toggle" title="YUGABYTE PLATFORM">
+YUGABYTE PLATFORM
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Yugabyte Platform" href="/latest/yugabyte-platform/">
+Yugabyte Platform
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Overview" href="/latest/yugabyte-platform/overview/">
+Overview
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Install" href="/latest/yugabyte-platform/overview/install/public-cloud/">
+Install
+</a>
+</li>
+<li>
+<a title="Configure" href="/latest/yugabyte-platform/overview/configure/aws/">
+Configure
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Install Yugabyte Platform" href="/latest/yugabyte-platform/install-yugabyte-platform/">
+Install Yugabyte Platform
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Prerequisites" href="/latest/yugabyte-platform/install-yugabyte-platform/prerequisites/">
+Prerequisites
+</a>
+</li>
+<li>
+<a title="Prepare the environment" href="/latest/yugabyte-platform/install-yugabyte-platform/prepare-environment/aws/">
+Prepare the environment
+</a>
+</li>
+
+<li>
+<a title="Install software" href="/latest/yugabyte-platform/install-yugabyte-platform/install-software/default/">
+Install software
+</a>
+</li>
+<li>
+<a title="Prepare nodes (on-prem)" href="/latest/yugabyte-platform/install-yugabyte-platform/prepare-on-prem-nodes/">
+Prepare nodes (on-prem)
+</a>
+</li>
+<li>
+<a title="Uninstall software" href="/latest/yugabyte-platform/install-yugabyte-platform/uninstall-software/">
+Uninstall software
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Configure Yugabyte Platform" href="/latest/yugabyte-platform/configure-yugabyte-platform/">
+Configure Yugabyte Platform
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Create admin user" href="/latest/yugabyte-platform/configure-yugabyte-platform/create-admin-user/">
+Create admin user
+</a>
+</li>
+<li>
+<a title="Configure the cloud provider" href="/latest/yugabyte-platform/configure-yugabyte-platform/set-up-cloud-provider/aws/">
+Configure the cloud provider
+</a>
+</li>
+<li>
+<a title="Configure the backup target" href="/latest/yugabyte-platform/configure-yugabyte-platform/backup-target/">
+Configure the backup target
+</a>
+</li>
+<li>
+<a title="Configure alerts" href="/latest/yugabyte-platform/configure-yugabyte-platform/set-up-alerts-health-check/">
+Configure alerts
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Create deployments" href="/latest/yugabyte-platform/create-deployments/">
+Create deployments
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Multi-zone universe" href="/latest/yugabyte-platform/create-deployments/create-universe-multi-zone/">
+Multi-zone universe
+</a>
+</li>
+<li>
+<a title="Multi-region universe" href="/latest/yugabyte-platform/create-deployments/create-universe-multi-region/">
+Multi-region universe
+</a>
+</li>
+<li>
+<a title="Multi-cloud universe" href="/latest/yugabyte-platform/create-deployments/create-universe-multi-cloud/">
+Multi-cloud universe
+</a>
+</li>
+<li>
+<a title="Read replica cluster" href="/latest/yugabyte-platform/create-deployments/read-replicas/">
+Read replica cluster
+</a>
+</li>
+<li>
+<a title="Asynchronous replication" href="/latest/yugabyte-platform/create-deployments/async-replication-platform/">
+Asynchronous replication
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Manage deployments" href="/latest/yugabyte-platform/manage-deployments/">
+Manage deployments
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Start and stop processes" href="/latest/yugabyte-platform/manage-deployments/start-stop-processes/">
+Start and stop processes
+</a>
+</li>
+<li>
+<a title="Add a node" href="/latest/yugabyte-platform/manage-deployments/add-nodes/">
+Add a node
+</a>
+</li>
+<li>
+<a title="Remove a node" href="/latest/yugabyte-platform/manage-deployments/remove-nodes/">
+Remove a node
+</a>
+</li>
+<li>
+<a title="Enable high availability" href="/latest/yugabyte-platform/manage-deployments/high-availability/">
+Enable high availability
+</a>
+</li>
+<li>
+<a title="Edit configuration flags" href="/latest/yugabyte-platform/manage-deployments/edit-config-flags/">
+Edit configuration flags
+</a>
+</li>
+<li>
+<a title="Edit a universe" href="/latest/yugabyte-platform/manage-deployments/edit-universe/">
+Edit a universe
+</a>
+</li>
+
+<li>
+<a title="Delete a universe" href="/latest/yugabyte-platform/manage-deployments/delete-universe/">
+Delete a universe
+</a>
+</li>
+<li>
+<a title="Configure instance tags" href="/latest/yugabyte-platform/manage-deployments/instance-tags/">
+Configure instance tags
+</a>
+</li>
+<li>
+<a title="Upgrade YugabyteDB software" href="/latest/yugabyte-platform/manage-deployments/upgrade-software/">
+Upgrade YugabyteDB software
+</a>
+</li>
+<li>
+<a title="Migrate to Helm 3" href="/latest/yugabyte-platform/manage-deployments/migrate-to-helm3/">
+Migrate to Helm 3
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Back up and restore universes" href="/latest/yugabyte-platform/back-up-restore-universes/">
+Back up and restore universes
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Configure backup storage" href="/latest/yugabyte-platform/back-up-restore-universes/configure-backup-storage/">
+Configure backup storage
+</a>
+</li>
+<li>
+<a title="Back up universe data" href="/latest/yugabyte-platform/back-up-restore-universes/back-up-universe-data/ysql/">
+Back up universe data
+</a>
+</li>
+<li>
+<a title="Restore universe data" href="/latest/yugabyte-platform/back-up-restore-universes/restore-universe-data/ysql/">
+Restore universe data
+</a>
+</li>
+<li>
+<a title="Schedule data backups" href="/latest/yugabyte-platform/back-up-restore-universes/schedule-data-backups/ysql/">
+Schedule data backups
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Security" href="/latest/yugabyte-platform/security/">
+Security
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+
+<a title="Security checklist" href="/latest/yugabyte-platform/security/security-checklist-yp/">
+Security checklist
+</a>
+</li>
+<li>
+<a title="Customize ports" href="/latest/yugabyte-platform/security/customize-ports/">
+Customize ports
+</a>
+</li>
+<li>
+<a title="LDAP authentication" href="/latest/yugabyte-platform/security/ldap-authentication-platform/">
+LDAP authentication
+</a>
+</li>
+<li>
+<a title="Authorization platform" href="/latest/yugabyte-platform/security/authorization-platform/">
+Authorization platform
+</a>
+</li>
+<li>
+<a title="Create a KMS configuration" href="/latest/yugabyte-platform/security/create-kms-config.md/aws-kms/">
+Create a KMS configuration
+</a>
+</li>
+<li>
+<a title="Enable encryption at rest" href="/latest/yugabyte-platform/security/enable-encryption-at-rest/">
+Enable encryption at rest
+</a>
+</li>
+<li>
+<a title="Enable encryption in transit (TLS)" href="/latest/yugabyte-platform/security/enable-encryption-in-transit/">
+Enable encryption in transit (TLS)
+</a>
+</li>
+<li>
+<a title="Network security" href="/latest/yugabyte-platform/security/network-security/">
+Network security
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Alerts and monitoring" href="/latest/yugabyte-platform/alerts-monitoring/">
+Alerts and monitoring
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Live Queries dashboard" href="/latest/yugabyte-platform/alerts-monitoring/live-queries-dashboard/">
+Live Queries dashboard
+</a>
+</li>
+<li>
+<a title="Slow Queries dashboard" href="/latest/yugabyte-platform/alerts-monitoring/slow-queries-dashboard/">
+Slow Queries dashboard
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Troubleshoot" href="/latest/yugabyte-platform/troubleshoot/">
+Troubleshoot
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+
+<li>
+<a title="Install and upgrade issues" href="/latest/yugabyte-platform/troubleshoot/install-upgrade-yp-issues/">
+Install and upgrade issues
+</a>
+</li>
+<li>
+<a title="Universe issues" href="/latest/yugabyte-platform/troubleshoot/universe-issues/">
+Universe issues
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Administer Yugabyte Platform" href="/latest/yugabyte-platform/administer-yugabyte-platform/">
+Administer Yugabyte Platform
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Back Up and Restore Yugabyte Platform" href="/latest/yugabyte-platform/administer-yugabyte-platform/back-up-restore-yp/">
+Back Up and Restore Yugabyte Platform
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Upgrade Yugabyte Platform" href="/latest/yugabyte-platform/upgrade/">
+Upgrade Yugabyte Platform
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Upgrade using Replicated" href="/latest/yugabyte-platform/upgrade/upgrade-yp-replicated/">
+Upgrade using Replicated
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a class="node-toggle" title="YUGABYTE CLOUD">
+YUGABYTE CLOUD
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Yugabyte Cloud" href="/latest/yugabyte-cloud/">
+Yugabyte Cloud
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Quickstart" href="/latest/yugabyte-cloud/cloud-quickstart/">
+Quickstart
+</a>
+</li>
+<li>
+<a title="Get started" href="/latest/yugabyte-cloud/cloud-basics/">
+Get started
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Create a cloud account" href="/latest/yugabyte-cloud/cloud-basics/add-account/">
+Create a cloud account
+</a>
+</li>
+<li>
+<a title="Create a cluster" href="/latest/yugabyte-cloud/cloud-basics/create-clusters/">
+Create a cluster
+</a>
+</li>
+
+<li>
+<a title="Assign IP allow lists" href="/latest/yugabyte-cloud/cloud-basics/add-connections/">
+Assign IP allow lists
+</a>
+</li>
+<li>
+<a title="Connect to clusters" href="/latest/yugabyte-cloud/cloud-basics/connect-to-clusters/">
+Connect to clusters
+</a>
+</li>
+<li>
+<a title="Create a database" href="/latest/yugabyte-cloud/cloud-basics/create-databases/">
+Create a database
+</a>
+</li>
+<li>
+<a title="Add database users" href="/latest/yugabyte-cloud/cloud-basics/add-users/">
+Add database users
+</a>
+</li>
+<li>
+<a title="Connect a Spring application" href="/latest/yugabyte-cloud/cloud-basics/connect-application/">
+Connect a Spring application
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Manage clusters" href="/latest/yugabyte-cloud/cloud-clusters/">
+Manage clusters
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Cluster overview" href="/latest/yugabyte-cloud/cloud-clusters/overview/">
+Cluster overview
+</a>
+</li>
+<li>
+<a title="Cluster tables" href="/latest/yugabyte-cloud/cloud-clusters/cluster-tables/">
+Cluster tables
+</a>
+</li>
+<li>
+<a title="Cluster nodes" href="/latest/yugabyte-cloud/cloud-clusters/manage-clusters/">
+Cluster nodes
+</a>
+</li>
+<li>
+<a title="Back up clusters" href="/latest/yugabyte-cloud/cloud-clusters/backup-clusters/">
+Back up clusters
+</a>
+</li>
+<li>
+<a title="Monitor activity" href="/latest/yugabyte-cloud/cloud-clusters/monitor-activity/">
+Monitor activity
+</a>
+</li>
+<li>
+<a title="Scale and configure clusters" href="/latest/yugabyte-cloud/cloud-clusters/configure-clusters/">
+Scale and configure clusters
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Network access" href="/latest/yugabyte-cloud/cloud-network/">
+Network access
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="VPC peering" href="/latest/yugabyte-cloud/cloud-network/vpc-peers/">
+VPC peering
+</a>
+</li>
+<li>
+<a title="IP allow lists" href="/latest/yugabyte-cloud/cloud-network/ip-whitelists/">
+IP allow lists
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Administer Yugabyte Cloud" href="/latest/yugabyte-cloud/cloud-admin/">
+Administer Yugabyte Cloud
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Users" href="/latest/yugabyte-cloud/cloud-admin/manage-access/">
+Users
+</a>
+</li>
+<li>
+<a title="Billing" href="/latest/yugabyte-cloud/cloud-admin/cloud-billing-profile/">
+Billing
+</a>
+</li>
+<li>
+<a title="Cluster costs" href="/latest/yugabyte-cloud/cloud-admin/cloud-billing-costs/">
+Cluster costs
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Tutorials and examples" href="/latest/yugabyte-cloud/cloud-develop/">
+Tutorials and examples
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Connect a YCQL Java application" href="/latest/yugabyte-cloud/cloud-develop/connect-ycql-application/">
+Connect a YCQL Java application
+</a>
+</li>
+<li>
+<a title="Hasura Cloud" href="/latest/yugabyte-cloud/cloud-develop/hasura-cloud/">
+Hasura Cloud
+</a>
+</li>
+<li>
+<a title="Deploy a GraphQL application" href="/latest/yugabyte-cloud/cloud-develop/hasura-sample-app/">
+Deploy a GraphQL application
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Security" href="/latest/yugabyte-cloud/cloud-security/">
+Security
+</a>
+</li>
+<li>
+<a title="Yugabyte Cloud FAQ" href="/latest/yugabyte-cloud/cloud-faq/">
+Yugabyte Cloud FAQ
+</a>
+</li>
+<li>
+<a title="What&#39;s new" href="/latest/yugabyte-cloud/release-notes/">
+
+What&#39;s new
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a class="node-toggle" title="INTEGRATIONS">
+INTEGRATIONS
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Integrations" href="/latest/integrations/">
+Integrations
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Apache Kafka" href="/latest/integrations/apache-kafka/">
+Apache Kafka
+</a>
+</li>
+<li>
+<a title="Apache Spark" href="/latest/integrations/apache-spark/scala/">
+Apache Spark
+</a>
+</li>
+<li>
+<a title="JanusGraph" href="/latest/integrations/janusgraph/">
+JanusGraph
+</a>
+</li>
+<li>
+<a title="KairosDB" href="/latest/integrations/kairosdb/">
+KairosDB
+</a>
+</li>
+<li>
+<a title="Presto" href="/latest/integrations/presto/">
+Presto
+</a>
+</li>
+<li>
+<a title="Metabase" href="/latest/integrations/metabase/">
+Metabase
+</a>
+</li>
+<li>
+<a title="JDBC Smart Driver" href="/latest/integrations/smart-driver/">
+JDBC Smart Driver
+</a>
+</li>
+<li>
+<a title="WSO2 Identity Server" href="/latest/integrations/wso2/">
+WSO2 Identity Server
+</a>
+</li>
+<li>
+<a title="YSQL Loader" href="/latest/integrations/ysql-loader/">
+YSQL Loader
+</a>
+</li>
+<li>
+<a title="Prisma" href="/latest/integrations/prisma/">
+Prisma
+</a>
+</li>
+<li>
+<a title="Hasura" href="/latest/integrations/hasura/">
+Hasura
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Application Development" href="/latest/integrations/hasura/hasura-1/">
+Application Development
+</a>
+</li>
+<li>
+<a title="Benchmarking" href="/latest/integrations/hasura/graphql/">
+Benchmarking
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Spring Framework" href="/latest/integrations/spring-framework/">
+Spring Framework
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Spring Data YugabyteDB" href="/latest/integrations/spring-framework/sdyb/">
+Spring Data YugabyteDB
+</a>
+</li>
+<li>
+<a title="Spring Data Cassandra" href="/latest/integrations/spring-framework/spring-cassandra/">
+Spring Data Cassandra
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Flyway" href="/latest/integrations/flyway/">
+Flyway
+</a>
+</li>
+<li>
+<a title="GORM" href="/latest/integrations/gorm/">
+GORM
+</a>
+</li>
+<li>
+<a title="Liquibase" href="/latest/integrations/liquibase/">
+Liquibase
+</a>
+</li>
+<li>
+<a title="Sequelize" href="/latest/integrations/sequelize/">
+Sequelize
+</a>
+</li>
+<li>
+<a title="SQLAlchemy" href="/latest/integrations/sqlalchemy/">
+SQLAlchemy
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="open">
+<a class="node-toggle current" title="REFERENCE">
+REFERENCE
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Reference" href="/latest/reference/">
+Reference
+</a>
+</li>
+<li>
+<a title="Architecture" href="/latest/architecture/">
+Architecture
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Design goals" href="/latest/architecture/design-goals/">
+Design goals
+</a>
+</li>
+<li>
+<a title="Key concepts" href="/latest/architecture/concepts/">
+Key concepts
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Universe" href="/latest/architecture/concepts/universe/">
+Universe
+</a>
+</li>
+<li>
+<a title="YB-TServer Service" href="/latest/architecture/concepts/yb-tserver/">
+YB-TServer Service
+</a>
+</li>
+<li>
+<a title="YB-Master Service" href="/latest/architecture/concepts/yb-master/">
+YB-Master Service
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Core functions" href="/latest/architecture/core-functions/">
+Core functions
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Universe creation" href="/latest/architecture/core-functions/universe-creation/">
+Universe creation
+</a>
+</li>
+<li>
+<a title="Table creation" href="/latest/architecture/core-functions/table-creation/">
+Table creation
+</a>
+</li>
+<li>
+<a title="Write IO path" href="/latest/architecture/core-functions/write-path/">
+Write IO path
+</a>
+</li>
+<li>
+<a title="Read IO path" href="/latest/architecture/core-functions/read-path/">
+Read IO path
+</a>
+</li>
+<li>
+<a title="High availability" href="/latest/architecture/core-functions/high-availability/">
+High availability
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Layered architecture" href="/latest/architecture/layered-architecture/">
+Layered architecture
+</a>
+</li>
+<li>
+<a title="Query layer" href="/latest/architecture/query-layer/">
+Query layer
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Overview" href="/latest/architecture/query-layer/overview/">
+Overview
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="DocDB transactions layer" href="/latest/architecture/transactions/">
+DocDB transactions layer
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+ </a>
+<ul>
+<li>
+<a title="Transactions overview" href="/latest/architecture/transactions/transactions-overview/">
+Transactions overview
+</a>
+</li>
+<li>
+<a title="Transaction isolation levels" href="/latest/architecture/transactions/isolation-levels/">
+Transaction isolation levels
+</a>
+</li>
+<li>
+<a title="Explicit locking" href="/latest/architecture/transactions/explicit-locking/">
+Explicit locking
+</a>
+</li>
+<li>
+<a title="Single-row transactions" href="/latest/architecture/transactions/single-row-transactions/">
+Single-row transactions
+</a>
+</li>
+<li>
+<a title="Distributed transactions" href="/latest/architecture/transactions/distributed-txns/">
+Distributed transactions
+</a>
+</li>
+<li>
+<a title="Transactional IO path" href="/latest/architecture/transactions/transactional-io-path/">
+Transactional IO path
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="DocDB sharding layer" href="/latest/architecture/docdb-sharding/">
+DocDB sharding layer
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Hash &amp; range sharding" href="/latest/architecture/docdb-sharding/sharding/">
+Hash &amp; range sharding
+</a>
+</li>
+<li>
+<a title="Tablet splitting" href="/latest/architecture/docdb-sharding/tablet-splitting/">
+Tablet splitting
+</a>
+</li>
+<li>
+<a title="Colocated tables" href="/latest/architecture/docdb-sharding/colocated-tables/">
+Colocated tables
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="DocDB replication layer" href="/latest/architecture/docdb-replication/">
+DocDB replication layer
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Replication" href="/latest/architecture/docdb-replication/replication/">
+Replication
+</a>
+</li>
+<li>
+<a title="xCluster replication" href="/latest/architecture/docdb-replication/async-replication/">
+xCluster replication
+</a>
+</li>
+<li>
+<a title="Read replicas" href="/latest/architecture/docdb-replication/read-replicas/">
+Read replicas
+</a>
+</li>
+<li>
+<a title="Change data capture (CDC)" href="/latest/architecture/docdb-replication/change-data-capture/">
+Change data capture (CDC)
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="DocDB storage layer" href="/latest/architecture/docdb/">
+DocDB storage layer
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Persistence" href="/latest/architecture/docdb/persistence/">
+Persistence
+</a>
+</li>
+<li>
+<a title="Performance" href="/latest/architecture/docdb/performance/">
+Performance
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="APIs" href="/latest/api/">
+APIs
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="YSQL" href="/latest/api/ysql/">
+YSQL
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="The SQL language" href="/latest/api/ysql/the-sql-language/">
+The SQL language
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="SQL statements" href="/latest/api/ysql/the-sql-language/statements/">
+SQL statements
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="ABORT" href="/latest/api/ysql/the-sql-language/statements/txn_abort/">
+ABORT
+</a>
+</li>
+<li>
+<a title="ALTER DATABASE" href="/latest/api/ysql/the-sql-language/statements/ddl_alter_db/">
+ALTER DATABASE
+</a>
+</li>
+<li>
+<a title="ALTER DEFAULT PRIVILEGES" href="/latest/api/ysql/the-sql-language/statements/dcl_alter_default_privileges/">
+ALTER DEFAULT PRIVILEGES
+</a>
+
+</li>
+<li>
+<a title="ALTER DOMAIN" href="/latest/api/ysql/the-sql-language/statements/ddl_alter_domain/">
+ALTER DOMAIN
+</a>
+</li>
+<li>
+<a title="ALTER GROUP" href="/latest/api/ysql/the-sql-language/statements/dcl_alter_group/">
+ALTER GROUP
+</a>
+</li>
+<li>
+<a title="ALTER POLICY" href="/latest/api/ysql/the-sql-language/statements/dcl_alter_policy/">
+ALTER POLICY
+</a>
+</li>
+<li>
+<a title="ALTER ROLE" href="/latest/api/ysql/the-sql-language/statements/dcl_alter_role/">
+ALTER ROLE
+</a>
+</li>
+<li>
+<a title="ALTER SEQUENCE" href="/latest/api/ysql/the-sql-language/statements/ddl_alter_sequence/">
+ALTER SEQUENCE
+</a>
+</li>
+<li>
+<a title="ALTER TABLE" href="/latest/api/ysql/the-sql-language/statements/ddl_alter_table/">
+ALTER TABLE
+</a>
+</li>
+<li>
+<a title="ALTER USER" href="/latest/api/ysql/the-sql-language/statements/dcl_alter_user/">
+ALTER USER
+</a>
+</li>
+<li>
+<a title="ANALYZE" href="/latest/api/ysql/the-sql-language/statements/cmd_analyze/">
+ANALYZE
+</a>
+</li>
+<li>
+<a title="BEGIN" href="/latest/api/ysql/the-sql-language/statements/txn_begin/">
+BEGIN
+</a>
+</li>
+<li>
+<a title="CALL" href="/latest/api/ysql/the-sql-language/statements/cmd_call/">
+CALL
+</a>
+</li>
+<li>
+<a title="COMMENT" href="/latest/api/ysql/the-sql-language/statements/ddl_comment/">
+COMMENT
+</a>
+</li>
+<li>
+<a title="COMMIT" href="/latest/api/ysql/the-sql-language/statements/txn_commit/">
+COMMIT
+</a>
+</li>
+<li>
+<a title="COPY" href="/latest/api/ysql/the-sql-language/statements/cmd_copy/">
+COPY
+</a>
+</li>
+<li>
+<a title="CREATE AGGREGATE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_aggregate/">
+CREATE AGGREGATE
+</a>
+</li>
+<li>
+<a title="CREATE CAST" href="/latest/api/ysql/the-sql-language/statements/ddl_create_cast/">
+CREATE CAST
+</a>
+</li>
+<li>
+<a title="CREATE DATABASE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_database/">
+CREATE DATABASE
+</a>
+</li>
+<li>
+<a title="CREATE DOMAIN" href="/latest/api/ysql/the-sql-language/statements/ddl_create_domain/">
+CREATE DOMAIN
+</a>
+</li>
+<li>
+<a title="CREATE EXTENSION" href="/latest/api/ysql/the-sql-language/statements/ddl_create_extension/">
+CREATE EXTENSION
+</a>
+</li>
+<li>
+<a title="CREATE FUNCTION" href="/latest/api/ysql/the-sql-language/statements/ddl_create_function/">
+CREATE FUNCTION
+</a>
+</li>
+<li>
+<a title="CREATE GROUP" href="/latest/api/ysql/the-sql-language/statements/dcl_create_group/">
+CREATE GROUP
+</a>
+</li>
+<li>
+<a title="CREATE INDEX" href="/latest/api/ysql/the-sql-language/statements/ddl_create_index/">
+CREATE INDEX
+</a>
+</li>
+<li>
+<a title="CREATE OPERATOR" href="/latest/api/ysql/the-sql-language/statements/ddl_create_operator/">
+CREATE OPERATOR
+</a>
+</li>
+<li>
+<a title="CREATE OPERATOR CLASS" href="/latest/api/ysql/the-sql-language/statements/ddl_create_operator_class/">
+CREATE OPERATOR CLASS
+</a>
+</li>
+<li>
+<a title="CREATE POLICY" href="/latest/api/ysql/the-sql-language/statements/dcl_create_policy/">
+CREATE POLICY
+</a>
+</li>
+<li>
+<a title="CREATE PROCEDURE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_procedure/">
+CREATE PROCEDURE
+</a>
+</li>
+<li>
+<a title="CREATE ROLE" href="/latest/api/ysql/the-sql-language/statements/dcl_create_role/">
+CREATE ROLE
+</a>
+</li>
+<li>
+<a title="CREATE RULE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_rule/">
+CREATE RULE
+</a>
+</li>
+<li>
+<a title="CREATE SCHEMA" href="/latest/api/ysql/the-sql-language/statements/ddl_create_schema/">
+CREATE SCHEMA
+</a>
+</li>
+<li>
+<a title="CREATE SEQUENCE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_sequence/">
+
+CREATE SEQUENCE
+</a>
+</li>
+<li>
+<a title="CREATE TABLE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_table/">
+CREATE TABLE
+</a>
+</li>
+<li>
+<a title="CREATE TABLE AS" href="/latest/api/ysql/the-sql-language/statements/ddl_create_table_as/">
+CREATE TABLE AS
+</a>
+</li>
+<li>
+<a title="CREATE TRIGGER" href="/latest/api/ysql/the-sql-language/statements/ddl_create_trigger/">
+CREATE TRIGGER
+</a>
+</li>
+<li>
+<a title="CREATE TYPE" href="/latest/api/ysql/the-sql-language/statements/ddl_create_type/">
+CREATE TYPE
+</a>
+</li>
+<li>
+<a title="CREATE USER" href="/latest/api/ysql/the-sql-language/statements/dcl_create_user/">
+CREATE USER
+</a>
+</li>
+<li>
+<a title="CREATE VIEW" href="/latest/api/ysql/the-sql-language/statements/ddl_create_view/">
+CREATE VIEW
+</a>
+</li>
+<li>
+<a title="DEALLOCATE" href="/latest/api/ysql/the-sql-language/statements/perf_deallocate/">
+DEALLOCATE
+</a>
+</li>
+<li>
+<a title="DELETE" href="/latest/api/ysql/the-sql-language/statements/dml_delete/">
+DELETE
+</a>
+</li>
+<li>
+<a title="DO" href="/latest/api/ysql/the-sql-language/statements/cmd_do/">
+DO
+</a>
+</li>
+<li>
+<a title="DROP AGGREGATE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_aggregate/">
+DROP AGGREGATE
+</a>
+</li>
+<li>
+<a title="DROP CAST" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_cast/">
+DROP CAST
+</a>
+</li>
+<li>
+<a title="DROP DATABASE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_database/">
+DROP DATABASE
+</a>
+</li>
+<li>
+<a title="DROP DOMAIN" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_domain/">
+DROP DOMAIN
+</a>
+</li>
+<li>
+<a title="DROP EXTENSION" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_extension/">
+DROP EXTENSION
+</a>
+</li>
+
+<li>
+<a title="DROP FUNCTION" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_function/">
+DROP FUNCTION
+</a>
+</li>
+<li>
+<a title="DROP GROUP" href="/latest/api/ysql/the-sql-language/statements/dcl_drop_group/">
+DROP GROUP
+</a>
+</li>
+<li>
+<a title="DROP OPERATOR" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_operator/">
+DROP OPERATOR
+</a>
+</li>
+<li>
+<a title="DROP OPERATOR CLASS" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_operator_class/">
+DROP OPERATOR CLASS
+</a>
+</li>
+<li>
+<a title="DROP OWNED" href="/latest/api/ysql/the-sql-language/statements/dcl_drop_owned/">
+DROP OWNED
+</a>
+</li>
+<li>
+<a title="DROP POLICY" href="/latest/api/ysql/the-sql-language/statements/dcl_drop_policy/">
+DROP POLICY
+</a>
+</li>
+<li>
+<a title="DROP PROCEDURE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_procedure/">
+DROP PROCEDURE
+</a>
+</li>
+<li>
+<a title="DROP ROLE" href="/latest/api/ysql/the-sql-language/statements/dcl_drop_role/">
+DROP ROLE
+</a>
+</li>
+<li>
+<a title="DROP RULE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_rule/">
+DROP RULE
+</a>
+</li>
+<li>
+<a title="DROP SEQUENCE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_sequence/">
+DROP SEQUENCE
+</a>
+</li>
+<li>
+<a title="DROP TABLE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_table/">
+DROP TABLE
+</a>
+</li>
+<li>
+<a title="DROP TRIGGER" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_trigger/">
+DROP TRIGGER
+</a>
+</li>
+<li>
+<a title="DROP TYPE" href="/latest/api/ysql/the-sql-language/statements/ddl_drop_type/">
+DROP TYPE
+</a>
+</li>
+<li>
+<a title="DROP USER" href="/latest/api/ysql/the-sql-language/statements/dcl_drop_user/">
+DROP USER
+</a>
+</li>
+<li>
+<a title="END" href="/latest/api/ysql/the-sql-language/statements/txn_end/">
+END
+</a>
+</li>
+<li>
+<a title="EXECUTE" href="/latest/api/ysql/the-sql-language/statements/perf_execute/">
+EXECUTE
+</a>
+</li>
+<li>
+<a title="EXPLAIN" href="/latest/api/ysql/the-sql-language/statements/perf_explain/">
+EXPLAIN
+</a>
+</li>
+<li>
+<a title="GRANT" href="/latest/api/ysql/the-sql-language/statements/dcl_grant/">
+GRANT
+</a>
+</li>
+<li>
+<a title="INSERT" href="/latest/api/ysql/the-sql-language/statements/dml_insert/">
+INSERT
+</a>
+</li>
+<li>
+<a title="LOCK" href="/latest/api/ysql/the-sql-language/statements/txn_lock/">
+LOCK
+</a>
+</li>
+<li>
+<a title="PREPARE" href="/latest/api/ysql/the-sql-language/statements/perf_prepare/">
+PREPARE
+</a>
+</li>
+<li>
+<a title="REASSIGN OWNED" href="/latest/api/ysql/the-sql-language/statements/dcl_reassign_owned/">
+REASSIGN OWNED
+</a>
+</li>
+<li>
+<a title="RELEASE SAVEPOINT" href="/latest/api/ysql/the-sql-language/statements/savepoint_release/">
+RELEASE SAVEPOINT
+</a>
+</li>
+<li>
+<a title="RESET" href="/latest/api/ysql/the-sql-language/statements/cmd_reset/">
+RESET
+</a>
+</li>
+<li>
+<a title="REVOKE" href="/latest/api/ysql/the-sql-language/statements/dcl_revoke/">
+REVOKE
+</a>
+</li>
+<li>
+<a title="ROLLBACK" href="/latest/api/ysql/the-sql-language/statements/txn_rollback/">
+ROLLBACK
+</a>
+</li>
+<li>
+<a title="ROLLBACK TO SAVEPOINT" href="/latest/api/ysql/the-sql-language/statements/savepoint_rollback/">
+ROLLBACK TO SAVEPOINT
+</a>
+</li>
+<li>
+<a title="SAVEPOINT" href="/latest/api/ysql/the-sql-language/statements/savepoint_create/">
+SAVEPOINT
+</a>
+</li>
+<li>
+<a title="SELECT" href="/latest/api/ysql/the-sql-language/statements/dml_select/">
+SELECT
+</a>
+</li>
+<li>
+<a title="SET" href="/latest/api/ysql/the-sql-language/statements/cmd_set/">
+
+SET
+</a>
+</li>
+<li>
+<a title="SET CONSTRAINTS" href="/latest/api/ysql/the-sql-language/statements/txn_set_constraints/">
+SET CONSTRAINTS
+</a>
+</li>
+<li>
+<a title="SET ROLE" href="/latest/api/ysql/the-sql-language/statements/dcl_set_role/">
+SET ROLE
+</a>
+</li>
+<li>
+<a title="SET SESSION AUTHORIZATION" href="/latest/api/ysql/the-sql-language/statements/dcl_set_session_authorization/">
+SET SESSION AUTHORIZATION
+</a>
+</li>
+<li>
+<a title="SET TRANSACTION" href="/latest/api/ysql/the-sql-language/statements/txn_set/">
+SET TRANSACTION
+</a>
+</li>
+<li>
+<a title="SHOW" href="/latest/api/ysql/the-sql-language/statements/cmd_show/">
+SHOW
+</a>
+</li>
+<li>
+<a title="SHOW TRANSACTION" href="/latest/api/ysql/the-sql-language/statements/txn_show/">
+SHOW TRANSACTION
+</a>
+</li>
+<li>
+<a title="TRUNCATE" href="/latest/api/ysql/the-sql-language/statements/ddl_truncate/">
+TRUNCATE
+</a>
+</li>
+<li>
+<a title="UPDATE" href="/latest/api/ysql/the-sql-language/statements/dml_update/">
+UPDATE
+</a>
+</li>
+<li>
+<a title="VALUES" href="/latest/api/ysql/the-sql-language/statements/dml_values/">
+VALUES
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="WITH clause" href="/latest/api/ysql/the-sql-language/with-clause/">
+WITH clause
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="WITH clause—SQL syntax and semantics" href="/latest/api/ysql/the-sql-language/with-clause/with-clause-syntax-semantics/">
+WITH clause—SQL syntax and semantics
+</a>
+</li>
+<li>
+<a title="recursive CTE" href="/latest/api/ysql/the-sql-language/with-clause/recursive-cte/">
+recursive CTE
+</a>
+</li>
+<li>
+<a title="case study—traversing an employee hierarchy" href="/latest/api/ysql/the-sql-language/with-clause/emps-hierarchy/">
+case study—traversing an employee hierarchy
+</a>
+</li>
+
+<li>
+<a title="traversing general graphs" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/">
+traversing general graphs
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="graph representation" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/graph-representation/">
+graph representation
+</a>
+</li>
+<li>
+<a title="common code" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/common-code/">
+common code
+</a>
+</li>
+<li>
+<a title="undirected cyclic graph" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/undirected-cyclic-graph/">
+undirected cyclic graph
+</a>
+</li>
+<li>
+<a title="directed cyclic graph" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/directed-cyclic-graph/">
+directed cyclic graph
+</a>
+</li>
+<li>
+<a title="directed acyclic graph" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/directed-acyclic-graph/">
+directed acyclic graph
+</a>
+</li>
+<li>
+<a title="rooted tree" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/rooted-tree/">
+rooted tree
+</a>
+</li>
+<li>
+<a title="Unique containing paths" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/unq-containing-paths/">
+Unique containing paths
+</a>
+</li>
+<li>
+<a title="Stress testing find_paths()" href="/latest/api/ysql/the-sql-language/with-clause/traversing-general-graphs/stress-test/">
+Stress testing find_paths()
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="case study—Bacon Numbers from IMDb" href="/latest/api/ysql/the-sql-language/with-clause/bacon-numbers/">
+case study—Bacon Numbers from IMDb
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Bacon numbers for synthetic data" href="/latest/api/ysql/the-sql-language/with-clause/bacon-numbers/synthetic-data/">
+Bacon numbers for synthetic data
+</a>
+</li>
+<li>
+<a title="Bacon numbers for IMDb data" href="/latest/api/ysql/the-sql-language/with-clause/bacon-numbers/imdb-data/">
+Bacon numbers for IMDb data
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Data types" href="/latest/api/ysql/datatypes/">
+Data types
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Array" href="/latest/api/ysql/datatypes/type_array/">
+Array
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="array[] constructor" href="/latest/api/ysql/datatypes/type_array/array-constructor/">
+array[] constructor
+</a>
+</li>
+<li>
+<a title="Literals" href="/latest/api/ysql/datatypes/type_array/literals/">
+Literals
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Text typecasting and literals" href="/latest/api/ysql/datatypes/type_array/literals/text-typecasting-and-literals/">
+Text typecasting and literals
+</a>
+</li>
+<li>
+<a title="Array of primitive values" href="/latest/api/ysql/datatypes/type_array/literals/array-of-primitive-values/">
+Array of primitive values
+</a>
+</li>
+<li>
+<a title="Row" href="/latest/api/ysql/datatypes/type_array/literals/row/">
+Row
+</a>
+</li>
+<li>
+<a title="Array of rows" href="/latest/api/ysql/datatypes/type_array/literals/array-of-rows/">
+Array of rows
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="FOREACH loop (PL/pgSQL)" href="/latest/api/ysql/datatypes/type_array/looping-through-arrays/">
+FOREACH loop (PL/pgSQL)
+</a>
+</li>
+<li>
+<a title="array of DOMAINs" href="/latest/api/ysql/datatypes/type_array/array-of-domains/">
+array of DOMAINs
+</a>
+</li>
+<li>
+<a title="Functions and operators" href="/latest/api/ysql/datatypes/type_array/functions-operators/">
+Functions and operators
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="ANY and ALL" href="/latest/api/ysql/datatypes/type_array/functions-operators/any-all/">
+ANY and ALL
+</a>
+</li>
+<li>
+<a title="Array comparison" href="/latest/api/ysql/datatypes/type_array/functions-operators/comparison/">
+Array comparison
+</a>
+</li>
+<li>
+<a title="Array slice operator" href="/latest/api/ysql/datatypes/type_array/functions-operators/slice-operator/">
+Array slice operator
+</a>
+</li>
+<li>
+<a title="Array concatenation" href="/latest/api/ysql/datatypes/type_array/functions-operators/concatenation/">
+Array concatenation
+</a>
+</li>
+<li>
+<a title="Array properties" href="/latest/api/ysql/datatypes/type_array/functions-operators/properties/">
+Array properties
+</a>
+</li>
+<li>
+<a title="array_agg(), unnest(), generate_subscripts()" href="/latest/api/ysql/datatypes/type_array/functions-operators/array-agg-unnest/">
+array_agg(), unnest(), generate_subscripts()
+</a>
+</li>
+<li>
+<a title="array_fill()" href="/latest/api/ysql/datatypes/type_array/functions-operators/array-fill/">
+array_fill()
+</a>
+</li>
+<li>
+<a title="array_position(), array_positions()" href="/latest/api/ysql/datatypes/type_array/functions-operators/array-position/">
+array_position(), array_positions()
+</a>
+</li>
+<li>
+<a title="array_remove()" href="/latest/api/ysql/datatypes/type_array/functions-operators/array-remove/">
+array_remove()
+</a>
+</li>
+<li>
+<a title="array_replace() / set value" href="/latest/api/ysql/datatypes/type_array/functions-operators/replace-a-value/">
+array_replace() / set value
+</a>
+</li>
+<li>
+<a title="array_to_string()" href="/latest/api/ysql/datatypes/type_array/functions-operators/array-to-string/">
+array_to_string()
+</a>
+</li>
+<li>
+<a title="string_to_array()" href="/latest/api/ysql/datatypes/type_array/functions-operators/string-to-array/">
+string_to_array()
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Binary" href="/latest/api/ysql/datatypes/type_binary/">
+Binary
+</a>
+</li>
+<li>
+<a title="Boolean" href="/latest/api/ysql/datatypes/type_bool/">
+Boolean
+</a>
+</li>
+<li>
+<a title="Character" href="/latest/api/ysql/datatypes/type_character/">
+Character
+</a>
+</li>
+<li>
+<a title="Date and time" href="/latest/api/ysql/datatypes/type_datetime/">
+Date and time
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Conceptual background" href="/latest/api/ysql/datatypes/type_datetime/conceptual-background/">
+Conceptual background
+</a>
+</li>
+<li>
+<a title="Timezones and UTC offsets" href="/latest/api/ysql/datatypes/type_datetime/timezones/">
+Timezones and UTC offsets
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Catalog views" href="/latest/api/ysql/datatypes/type_datetime/timezones/catalog-views/">
+Catalog views
+</a>
+</li>
+<li>
+<a title="Extended_timezone_names" href="/latest/api/ysql/datatypes/type_datetime/timezones/extended-timezone-names/">
+Extended_timezone_names
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Unrestricted full projection" href="/latest/api/ysql/datatypes/type_datetime/timezones/extended-timezone-names/unrestricted-full-projection/">
+Unrestricted full projection
+</a>
+</li>
+<li>
+<a title="Real timezones with DST" href="/latest/api/ysql/datatypes/type_datetime/timezones/extended-timezone-names/canonical-real-country-with-dst/">
+Real timezones with DST
+</a>
+</li>
+<li>
+<a title="Real timezones no DST" href="/latest/api/ysql/datatypes/type_datetime/timezones/extended-timezone-names/canonical-real-country-no-dst/">
+Real timezones no DST
+</a>
+</li>
+<li>
+<a title="Synthetic timezones no DST" href="/latest/api/ysql/datatypes/type_datetime/timezones/extended-timezone-names/canonical-no-country-no-dst/">
+Synthetic timezones no DST
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Offset/timezone-sensitive operations" href="/latest/api/ysql/datatypes/type_datetime/timezones/timezone-sensitive-operations/">
+Offset/timezone-sensitive operations
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Timestamptz to/from timestamp conversion" href="/latest/api/ysql/datatypes/type_datetime/timezones/timezone-sensitive-operations/timestamptz-plain-timestamp-conversion/">
+Timestamptz to/from timestamp conversion
+</a>
+</li>
+<li>
+<a title="Pure &#39;day&#39; interval arithmetic" href="/latest/api/ysql/datatypes/type_datetime/timezones/timezone-sensitive-operations/timestamptz-interval-day-arithmetic/">
+Pure &#39;day&#39; interval arithmetic
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Four ways to specify offset" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/">
+Four ways to specify offset
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Name-resolution rules" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/">
+Name-resolution rules
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="1 case-insensitive resolution" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/rule-1/">
+1 case-insensitive resolution
+</a>
+</li>
+<li>
+<a title="2 ~names.abbrev never searched" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/rule-2/">
+2 ~names.abbrev never searched
+</a>
+</li>
+<li>
+<a title="3 &#39;set timezone&#39; string not resolved in ~abbrevs.abbrev" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/rule-3/">
+3 &#39;set timezone&#39; string not resolved in ~abbrevs.abbrev
+</a>
+</li>
+<li>
+<a title="4 ~abbrevs.abbrev before ~names.name" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/rule-4/">
+4 ~abbrevs.abbrev before ~names.name
+</a>
+</li>
+<li>
+<a title="Helper functions" href="/latest/api/ysql/datatypes/type_datetime/timezones/ways-to-spec-offset/name-res-rules/helper-functions/">
+Helper functions
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Syntax contexts for offset" href="/latest/api/ysql/datatypes/type_datetime/timezones/syntax-contexts-to-spec-offset/">
+Syntax contexts for offset
+</a>
+</li>
+<li>
+<a title="Recommended practice" href="/latest/api/ysql/datatypes/type_datetime/timezones/recommendation/">
+Recommended practice
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Typecasting between date-time and text-values" href="/latest/api/ysql/datatypes/type_datetime/typecasting-between-date-time-and-text/">
+Typecasting between date-time and text-values
+</a>
+</li>
+<li>
+<a title="Semantics of the date-time data types" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/">
+Semantics of the date-time data types
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Date data type" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-date/">
+Date data type
+</a>
+</li>
+<li>
+<a title="Time data type" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-time/">
+Time data type
+</a>
+</li>
+<li>
+<a title="Plain timestamp and timestamptz" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-timestamp/">
+Plain timestamp and timestamptz
+</a>
+</li>
+<li>
+<a title="Interval data type" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/">
+Interval data type
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Interval representation" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-representation/">
+Interval representation
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Ad hoc examples" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-representation/ad-hoc-examples/">
+Ad hoc examples
+</a>
+</li>
+<li>
+<a title="Representation model" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-representation/internal-representation-model/">
+Representation model
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Interval value limits" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-limits/">
+Interval value limits
+</a>
+</li>
+<li>
+<a title="Declaring intervals" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/declaring-intervals/">
+Declaring intervals
+</a>
+</li>
+<li>
+<a title="Justify() and extract(epoch...)" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/justfy-and-extract-epoch/">
+Justify() and extract(epoch...)
+</a>
+</li>
+<li>
+<a title="Interval arithmetic" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/">
+Interval arithmetic
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Interval-interval comparison" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/interval-interval-comparison/">
+Interval-interval comparison
+</a>
+</li>
+<li>
+<a title="Interval-interval addition and subtraction" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/interval-interval-addition/">
+Interval-interval addition and subtraction
+</a>
+</li>
+<li>
+<a title="Interval-number multiplication" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/interval-number-multiplication/">
+Interval-number multiplication
+</a>
+</li>
+<li>
+<a title="Moment-moment overloads of &#34;-&#34;" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/moment-moment-overloads-of-minus/">
+Moment-moment overloads of &#34;-&#34;
+</a>
+</li>
+<li>
+<a title="Moment-interval overloads of &#34;&#43;&#34; and &#34;-&#34;" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-arithmetic/moment-interval-overloads-of-plus-and-minus/">
+Moment-interval overloads of &#34;&#43;&#34; and &#34;-&#34;
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Custom interval domains" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/custom-interval-domains/">
+Custom interval domains
+</a>
+</li>
+<li>
+<a title="Interval utility functions" href="/latest/api/ysql/datatypes/type_datetime/date-time-data-types-semantics/type-interval/interval-utilities/">
+Interval utility functions
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Typecasting between date-time datatypes" href="/latest/api/ysql/datatypes/type_datetime/typecasting-between-date-time-values/">
+Typecasting between date-time datatypes
+</a>
+</li>
+<li>
+<a title="Case study—SQL stopwatch" href="/latest/api/ysql/datatypes/type_datetime/stopwatch/">
+Case study—SQL stopwatch
+</a>
+</li>
+<li>
+<a title="Download &amp; install the date-time utilities" href="/latest/api/ysql/datatypes/type_datetime/download-date-time-utilities/">
+Download &amp; install the date-time utilities
+</a>
+</li>
+<li>
+<a title="ToC" href="/latest/api/ysql/datatypes/type_datetime/toc/">
+ToC
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="JSON" href="/latest/api/ysql/datatypes/type_json/">
+JSON
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="JSON literals" href="/latest/api/ysql/datatypes/type_json/json-literals/">
+JSON literals
+</a>
+</li>
+<li>
+<a title="Primitive and compound data types" href="/latest/api/ysql/datatypes/type_json/primitive-and-compound-data-types/">
+Primitive and compound data types
+</a>
+</li>
+<li>
+<a title="Code example conventions" href="/latest/api/ysql/datatypes/type_json/code-example-conventions/">
+Code example conventions
+</a>
+</li>
+
+<li>
+<a title="Indexes and check constraints" href="/latest/api/ysql/datatypes/type_json/create-indexes-check-constraints/">
+Indexes and check constraints
+</a>
+</li>
+<li>
+<a title="Functions &amp; operators" href="/latest/api/ysql/datatypes/type_json/functions-operators/">
+Functions &amp; operators
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="::jsonb, ::json, ::text (typecast)" href="/latest/api/ysql/datatypes/type_json/functions-operators/typecast-operators/">
+::jsonb, ::json, ::text (typecast)
+</a>
+</li>
+<li>
+<a title="-&gt;, -&gt;&gt;, #&gt;, #&gt;&gt; (JSON subvalues)" href="/latest/api/ysql/datatypes/type_json/functions-operators/subvalue-operators/">
+-&gt;, -&gt;&gt;, #&gt;, #&gt;&gt; (JSON subvalues)
+</a>
+</li>
+<li>
+<a title="- and #- (remove)" href="/latest/api/ysql/datatypes/type_json/functions-operators/remove-operators/">
+- and #- (remove)
+</a>
+</li>
+<li>
+<a title="|| (concatenation)" href="/latest/api/ysql/datatypes/type_json/functions-operators/concatenation-operator/">
+|| (concatenation)
+</a>
+</li>
+<li>
+<a title="= (equality)" href="/latest/api/ysql/datatypes/type_json/functions-operators/equality-operator/">
+= (equality)
+</a>
+</li>
+<li>
+<a title="@&gt; and &lt;@ (containment)" href="/latest/api/ysql/datatypes/type_json/functions-operators/containment-operators/">
+@&gt; and &lt;@ (containment)
+</a>
+</li>
+<li>
+<a title="? and ?| and ?&amp; (key or value existence)" href="/latest/api/ysql/datatypes/type_json/functions-operators/key-or-value-existence-operators/">
+? and ?| and ?&amp; (key or value existence)
+</a>
+</li>
+<li>
+<a title="array_to_json()" href="/latest/api/ysql/datatypes/type_json/functions-operators/array-to-json/">
+array_to_json()
+</a>
+</li>
+<li>
+<a title="jsonb_agg()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-agg/">
+jsonb_agg()
+</a>
+</li>
+<li>
+<a title="jsonb_array_elements()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-array-elements/">
+jsonb_array_elements()
+</a>
+</li>
+ <li>
+<a title="jsonb_array_elements_text()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-array-elements-text/">
+jsonb_array_elements_text()
+</a>
+</li>
+<li>
+<a title="jsonb_array_length()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-array-length/">
+jsonb_array_length()
+</a>
+</li>
+<li>
+<a title="jsonb_build_object()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-build-object/">
+jsonb_build_object()
+</a>
+</li>
+<li>
+<a title="jsonb_build_array()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-build-array/">
+jsonb_build_array()
+</a>
+</li>
+<li>
+<a title="jsonb_each()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-each/">
+jsonb_each()
+</a>
+</li>
+<li>
+<a title="jsonb_each_text()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-each-text/">
+jsonb_each_text()
+</a>
+</li>
+<li>
+<a title="jsonb_extract_path()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-extract-path/">
+jsonb_extract_path()
+</a>
+</li>
+<li>
+<a title="jsonb_extract_path_text() and json_extract_path_text()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-extract-path-text/">
+jsonb_extract_path_text() and json_extract_path_text()
+</a>
+</li>
+<li>
+<a title="jsonb_object()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-object/">
+jsonb_object()
+</a>
+</li>
+<li>
+<a title="jsonb_object_agg()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-object-agg/">
+jsonb_object_agg()
+</a>
+</li>
+<li>
+<a title="jsonb_object_keys()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-object-keys/">
+jsonb_object_keys()
+</a>
+</li>
+<li>
+<a title="jsonb_populate_record()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-populate-record/">
+jsonb_populate_record()
+</a>
+</li>
+<li>
+<a title="jsonb_populate_recordset()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-populate-recordset/">
+jsonb_populate_recordset()
+</a>
+</li>
+
+<li>
+<a title="jsonb_pretty()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-pretty/">
+jsonb_pretty()
+</a>
+</li>
+<li>
+<a title="jsonb_set() and jsonb_insert()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-set-jsonb-insert/">
+jsonb_set() and jsonb_insert()
+</a>
+</li>
+<li>
+<a title="jsonb_strip_nulls()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-strip-nulls/">
+jsonb_strip_nulls()
+</a>
+</li>
+<li>
+<a title="jsonb_to_record()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-to-record/">
+jsonb_to_record()
+</a>
+</li>
+<li>
+<a title="jsonb_to_recordset()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-to-recordset/">
+jsonb_to_recordset()
+</a>
+</li>
+<li>
+<a title="jsonb_typeof()" href="/latest/api/ysql/datatypes/type_json/functions-operators/jsonb-typeof/">
+jsonb_typeof()
+</a>
+</li>
+<li>
+<a title="row_to_json()" href="/latest/api/ysql/datatypes/type_json/functions-operators/row-to-json/">
+row_to_json()
+</a>
+</li>
+<li>
+<a title="to_jsonb()" href="/latest/api/ysql/datatypes/type_json/functions-operators/to-jsonb/">
+to_jsonb()
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Money" href="/latest/api/ysql/datatypes/type_money/">
+Money
+</a>
+</li>
+<li>
+<a title="Numeric" href="/latest/api/ysql/datatypes/type_numeric/">
+Numeric
+</a>
+</li>
+<li>
+<a title="Range" href="/latest/api/ysql/datatypes/type_range/">
+Range
+</a>
+</li>
+<li>
+<a title="Serial" href="/latest/api/ysql/datatypes/type_serial/">
+Serial
+</a>
+</li>
+<li>
+<a title="UUID" href="/latest/api/ysql/datatypes/type_uuid/">
+UUID
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Functions and operators" href="/latest/api/ysql/exprs/">
+Functions and operators
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Aggregate functions" href="/latest/api/ysql/exprs/aggregate_functions/">
+Aggregate functions
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Informal functionality overview" href="/latest/api/ysql/exprs/aggregate_functions/functionality-overview/">
+Informal functionality overview
+</a>
+</li>
+<li>
+<a title="Invocation syntax and semantics" href="/latest/api/ysql/exprs/aggregate_functions/invocation-syntax-semantics/">
+Invocation syntax and semantics
+</a>
+</li>
+<li>
+<a title="grouping sets, rollup, cube" href="/latest/api/ysql/exprs/aggregate_functions/grouping-sets-rollup-cube/">
+grouping sets, rollup, cube
+</a>
+</li>
+<li>
+<a title="Per function signature and purpose" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/">
+Per function signature and purpose
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="avg(), count(), max(), min(), sum()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/avg-count-max-min-sum/">
+avg(), count(), max(), min(), sum()
+</a>
+</li>
+<li>
+<a title="array_agg(), string_agg(), jsonb_agg(), jsonb_object_agg()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/array-string-jsonb-jsonb-object-agg/">
+array_agg(), string_agg(), jsonb_agg(), jsonb_object_agg()
+</a>
+</li>
+<li>
+<a title="bit_and(), bit_or(), bool_and(), bool_or()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/bit-and-or-bool-and-or/">
+bit_and(), bit_or(), bool_and(), bool_or()
+</a>
+</li>
+<li>
+<a title="variance(), var_pop(), var_samp(), stddev(), stddev_pop(), stddev_samp()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/variance-stddev/">
+variance(), var_pop(), var_samp(), stddev(), stddev_pop(), stddev_samp()
+</a>
+</li>
+<li>
+<a title="linear regression" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/linear-regression/">
+linear regression
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+ <li>
+<a title="covar_pop(), covar_samp(), corr()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/linear-regression/covar-corr/">
+covar_pop(), covar_samp(), corr()
+</a>
+</li>
+<li>
+<a title="regr_%()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/linear-regression/regr/">
+regr_%()
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="mode(), percentile_disc(), percentile_cont()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/mode-percentile-disc-percentile-cont/">
+mode(), percentile_disc(), percentile_cont()
+</a>
+</li>
+<li>
+<a title="rank(), dense_rank(), percent_rank(), cume_dist()" href="/latest/api/ysql/exprs/aggregate_functions/function-syntax-semantics/rank-dense-rank-percent-rank-cume-dist/">
+rank(), dense_rank(), percent_rank(), cume_dist()
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="case study—percentile_cont() and the &#34;68–95–99.7&#34; rule" href="/latest/api/ysql/exprs/aggregate_functions/case-study-the-6895997-rule/">
+case study—percentile_cont() and the &#34;68–95–99.7&#34; rule
+</a>
+</li>
+<li>
+<a title="case study—linear regression on COVID data" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/">
+case study—linear regression on COVID data
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Download the COVIDcast data" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/download-the-covidcast-data/">
+Download the COVIDcast data
+</a>
+</li>
+<li>
+<a title="Ingest the COVIDcast data" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/">
+Ingest the COVIDcast data
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Inspect the COVIDcast data" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/inspect-the-csv-files/">
+Inspect the COVIDcast data
+</a>
+</li>
+<li>
+<a title="Copy the .csv files to staging tables" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/stage-the-csv-files/">
+Copy the .csv files to staging tables
+</a>
+</li>
+<li>
+<a title="Check staged data conforms to the rules" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/check-data-conforms-to-the-rules/">
+Check staged data conforms to the rules
+</a>
+</li>
+<li>
+<a title="Join the staged data into a single table" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/join-the-staged-data/">
+Join the staged data into a single table
+</a>
+</li>
+<li>
+<a title="SQL scripts" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/">
+SQL scripts
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Create cr_staging_tables()" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/cr-cr-staging-tables-sql/">
+Create cr_staging_tables()
+</a>
+</li>
+<li>
+<a title="Create cr_copy_from_scripts()" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/cr-cr-copy-from-csv-scripts-sql/">
+Create cr_copy_from_scripts()
+</a>
+</li>
+<li>
+<a title="Create assert_assumptions_ok()" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/cr-assert-assumptions-ok-sql/">
+Create assert_assumptions_ok()
+</a>
+</li>
+<li>
+<a title="Create xform_to_covidcast_fb_survey_results()" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/cr-xform-to-joined-table-sql/">
+Create xform_to_covidcast_fb_survey_results()
+</a>
+</li>
+<li>
+<a title="ingest-the-data.sql" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/ingest-the-covidcast-data/ingest-scripts/ingest-the-data-sql/">
+ingest-the-data.sql
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Analyze the COVIDcast data" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/">
+Analyze the COVIDcast data
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="symptoms vs mask-wearing by day" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/daily-regression-analysis/">
+symptoms vs mask-wearing by day
+</a>
+</li>
+<li>
+<a title="Data for scatter-plot for 21-Oct-2020" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/symptoms-vs-mask-wearing-by-state/">
+Data for scatter-plot for 21-Oct-2020
+</a>
+</li>
+<li>
+<a title="Scatter-plot for 21-Oct-2020" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/scatter-plot-for-2020-10-21/">
+Scatter-plot for 21-Oct-2020
+</a>
+</li>
+<li>
+<a title="SQL scripts" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/analysis-scripts/">
+SQL scripts
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="analysis-queries.sql" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/analysis-scripts/analysis-queries-sql/">
+analysis-queries.sql
+</a>
+</li>
+<li>
+<a title="synthetic-data.sql" href="/latest/api/ysql/exprs/aggregate_functions/covid-data-case-study/analyze-the-covidcast-data/analysis-scripts/synthetic-data-sql/">
+synthetic-data.sql
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="currval()" href="/latest/api/ysql/exprs/func_currval/">
+currval()
+</a>
+</li>
+<li>
+<a title="lastval()" href="/latest/api/ysql/exprs/func_lastval/">
+lastval()
+</a>
+</li>
+<li>
+<a title="nextval()" href="/latest/api/ysql/exprs/func_nextval/">
+nextval()
+</a>
+</li>
+<li>
+<a title="Window functions" href="/latest/api/ysql/exprs/window_functions/">
+Window functions
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Informal functionality overview" href="/latest/api/ysql/exprs/window_functions/functionality-overview/">
+Informal functionality overview
+</a>
+</li>
+<li>
+<a title="Invocation syntax and semantics" href="/latest/api/ysql/exprs/window_functions/invocation-syntax-semantics/">
+Invocation syntax and semantics
+</a>
+</li>
+<li>
+<a title="Per function signature and purpose" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/">
+Per function signature and purpose
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="row_number(), rank() and dense_rank()" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/row-number-rank-dense-rank/">
+row_number(), rank() and dense_rank()
+</a>
+</li>
+<li>
+<a title="percent_rank(), cume_dist() and ntile()" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/percent-rank-cume-dist-ntile/">
+percent_rank(), cume_dist() and ntile()
+</a>
+</li>
+<li>
+<a title="first_value(), nth_value(), last_value()" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/first-value-nth-value-last-value/">
+first_value(), nth_value(), last_value()
+</a>
+</li>
+<li>
+<a title="lag(), lead()" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/lag-lead/">
+lag(), lead()
+</a>
+</li>
+<li>
+<a title="Tables for the code examples" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/data-sets/">
+Tables for the code examples
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="table t1" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/data-sets/table-t1/">
+table t1
+</a>
+</li>
+<li>
+<a title="table t2" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/data-sets/table-t2/">
+table t2
+</a>
+</li>
+<li>
+<a title="table t3" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/data-sets/table-t3/">
+table t3
+</a>
+</li>
+<li>
+<a title="table t4" href="/latest/api/ysql/exprs/window_functions/function-syntax-semantics/data-sets/table-t4/">
+table t4
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="case study—analyzing a normal distribution" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/">
+case study—analyzing a normal distribution
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Bucket allocation scheme" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/bucket-allocation/">
+Bucket allocation scheme
+</a>
+</li>
+<li>
+<a title="do_clean_start.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-clean-start/">
+do_clean_start.sql
+</a>
+</li>
+<li>
+<a title="cr_show_t4.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-show-t4/">
+cr_show_t4.sql
+</a>
+</li>
+<li>
+<a title="cr_dp_views.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-dp-views/">
+cr_dp_views.sql
+</a>
+</li>
+<li>
+<a title="cr_int_views.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-int-views/">
+cr_int_views.sql
+</a>
+</li>
+<li>
+<a title="cr_pr_cd_equality_report.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-pr-cd-equality-report/">
+cr_pr_cd_equality_report.sql
+</a>
+</li>
+<li>
+<a title="cr_bucket_using_width_bucket.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-bucket-using-width-bucket/">
+cr_bucket_using_width_bucket.sql
+</a>
+</li>
+<li>
+<a title="cr_bucket_dedicated_code.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-bucket-dedicated-code/">
+cr_bucket_dedicated_code.sql
+</a>
+</li>
+<li>
+<a title="do_assert_bucket_ok" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-assert-bucket-ok/">
+do_assert_bucket_ok
+</a>
+</li>
+<li>
+<a title="cr_histogram.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-histogram/">
+cr_histogram.sql
+</a>
+</li>
+<li>
+<a title="cr_do_ntile.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-do-ntile/">
+cr_do_ntile.sql
+</a>
+</li>
+<li>
+<a title="cr_do_percent_rank.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-do-percent-rank/">
+cr_do_percent_rank.sql
+</a>
+</li>
+<li>
+<a title="cr_do_cume_dist.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/cr-do-cume-dist/">
+cr_do_cume_dist.sql
+</a>
+ </li>
+<li>
+<a title="do_populate_results.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-populate-results/">
+do_populate_results.sql
+</a>
+</li>
+<li>
+<a title="do_report_results.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-report-results/">
+do_report_results.sql
+</a>
+</li>
+<li>
+<a title="do_compare_dp_results.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-compare-dp-results/">
+do_compare_dp_results.sql
+</a>
+</li>
+<li>
+<a title="do_demo.sql" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/do-demo/">
+do_demo.sql
+</a>
+</li>
+<li>
+<a title="Reports" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/reports/">
+Reports
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Histogram report" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/reports/histogram-report/">
+Histogram report
+</a>
+</li>
+<li>
+<a title="dp-results" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/reports/dp-results/">
+dp-results
+</a>
+</li>
+<li>
+<a title="compare-dp-results" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/reports/compare-dp-results/">
+compare-dp-results
+</a>
+</li>
+<li>
+<a title="int-results" href="/latest/api/ysql/exprs/window_functions/analyzing-a-normal-distribution/reports/int-results/">
+int-results
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Extensions" href="/latest/api/ysql/extensions/">
+Extensions
+</a>
+</li>
+<li>
+<a title="Keywords" href="/latest/api/ysql/keywords/">
+Keywords
+</a>
+</li>
+<li>
+<a title="Reserved names" href="/latest/api/ysql/reserved_names/">
+Reserved names
+</a>
+</li>
+</ul>
+</li>
+
+<li>
+<a title="YCQL" href="/latest/api/ycql/">
+YCQL
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="ALTER KEYSPACE" href="/latest/api/ycql/ddl_alter_keyspace/">
+ALTER KEYSPACE
+</a>
+</li>
+<li>
+<a title="ALTER ROLE" href="/latest/api/ycql/ddl_alter_role/">
+ALTER ROLE
+</a>
+</li>
+<li>
+<a title="ALTER TABLE" href="/latest/api/ycql/ddl_alter_table/">
+ALTER TABLE
+</a>
+</li>
+<li>
+<a title="CREATE INDEX" href="/latest/api/ycql/ddl_create_index/">
+CREATE INDEX
+</a>
+</li>
+<li>
+<a title="CREATE KEYSPACE" href="/latest/api/ycql/ddl_create_keyspace/">
+CREATE KEYSPACE
+</a>
+</li>
+<li>
+<a title="CREATE ROLE" href="/latest/api/ycql/ddl_create_role/">
+CREATE ROLE
+</a>
+</li>
+<li>
+<a title="CREATE TABLE" href="/latest/api/ycql/ddl_create_table/">
+CREATE TABLE
+</a>
+</li>
+<li>
+<a title="CREATE TYPE" href="/latest/api/ycql/ddl_create_type/">
+CREATE TYPE
+</a>
+</li>
+<li>
+<a title="DROP INDEX" href="/latest/api/ycql/ddl_drop_index/">
+DROP INDEX
+</a>
+</li>
+<li>
+<a title="DROP KEYSPACE" href="/latest/api/ycql/ddl_drop_keyspace/">
+DROP KEYSPACE
+</a>
+</li>
+<li>
+<a title="DROP ROLE" href="/latest/api/ycql/ddl_drop_role/">
+DROP ROLE
+</a>
+</li>
+<li>
+<a title="DROP TABLE" href="/latest/api/ycql/ddl_drop_table/">
+DROP TABLE
+</a>
+</li>
+<li>
+<a title="DROP TYPE" href="/latest/api/ycql/ddl_drop_type/">
+DROP TYPE
+</a>
+</li>
+<li>
+<a title="GRANT PERMISSION" href="/latest/api/ycql/ddl_grant_permission/">
+GRANT PERMISSION
+</a>
+</li>
+<li>
+<a title="GRANT ROLE" href="/latest/api/ycql/ddl_grant_role/">
+GRANT ROLE
+</a>
+
+</li>
+<li>
+<a title="REVOKE PERMISSION" href="/latest/api/ycql/ddl_revoke_permission/">
+REVOKE PERMISSION
+</a>
+</li>
+<li>
+<a title="REVOKE ROLE" href="/latest/api/ycql/ddl_revoke_role/">
+REVOKE ROLE
+</a>
+</li>
+<li>
+<a title="USE" href="/latest/api/ycql/ddl_use/">
+USE
+</a>
+</li>
+<li>
+<a title="INSERT" href="/latest/api/ycql/dml_insert/">
+INSERT
+</a>
+</li>
+<li>
+<a title="SELECT" href="/latest/api/ycql/dml_select/">
+SELECT
+</a>
+</li>
+<li>
+<a title="EXPLAIN" href="/latest/api/ycql/explain/">
+EXPLAIN
+</a>
+</li>
+<li>
+<a title="UPDATE" href="/latest/api/ycql/dml_update/">
+UPDATE
+</a>
+</li>
+<li>
+<a title="DELETE" href="/latest/api/ycql/dml_delete/">
+DELETE
+</a>
+</li>
+<li>
+<a title="TRANSACTION" href="/latest/api/ycql/dml_transaction/">
+TRANSACTION
+</a>
+</li>
+<li>
+<a title="TRUNCATE" href="/latest/api/ycql/dml_truncate/">
+TRUNCATE
+</a>
+</li>
+<li>
+<a title="Simple expressions" href="/latest/api/ycql/expr_simple/">
+Simple expressions
+</a>
+</li>
+<li>
+<a title="Subscripted expressions" href="/latest/api/ycql/expr_subscript/">
+Subscripted expressions
+</a>
+</li>
+<li>
+<a title="Function call" href="/latest/api/ycql/expr_fcall/">
+Function call
+</a>
+</li>
+<li>
+<a title="Operators" href="/latest/api/ycql/expr_ocall/">
+Operators
+</a>
+</li>
+<li>
+<a title="BLOB" href="/latest/api/ycql/type_blob/">
+BLOB
+</a>
+</li>
+<li>
+<a title="BOOLEAN" href="/latest/api/ycql/type_bool/">
+BOOLEAN
+</a>
+</li>
+<li>
+
+<a title="Collection" href="/latest/api/ycql/type_collection/">
+Collection
+</a>
+</li>
+<li>
+<a title="FROZEN" href="/latest/api/ycql/type_frozen/">
+FROZEN
+</a>
+</li>
+<li>
+<a title="INET" href="/latest/api/ycql/type_inet/">
+INET
+</a>
+</li>
+<li>
+<a title="Integer and counter" href="/latest/api/ycql/type_int/">
+Integer and counter
+</a>
+</li>
+<li>
+<a title="Non-integer" href="/latest/api/ycql/type_number/">
+Non-integer
+</a>
+</li>
+<li>
+<a title="TEXT" href="/latest/api/ycql/type_text/">
+TEXT
+</a>
+</li>
+<li>
+<a title="DATE, TIME, and TIMESTAMP" href="/latest/api/ycql/type_datetime/">
+DATE, TIME, and TIMESTAMP
+</a>
+</li>
+<li>
+<a title="UUID and TIMEUUID" href="/latest/api/ycql/type_uuid/">
+UUID and TIMEUUID
+</a>
+</li>
+<li>
+<a title="JSONB" href="/latest/api/ycql/type_jsonb/">
+JSONB
+</a>
+</li>
+<li>
+<a title="Date and time" href="/latest/api/ycql/function_datetime/">
+Date and time
+</a>
+</li>
+<li>
+<a title="BATCH" href="/latest/api/ycql/batch/">
+BATCH
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="CLIs" href="/latest/admin/">
+CLIs
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="yb-ctl" href="/latest/admin/yb-ctl/">
+yb-ctl
+</a>
+</li>
+<li>
+<a title="yb-docker-ctl" href="/latest/admin/yb-docker-ctl/">
+yb-docker-ctl
+</a>
+</li>
+<li>
+<a title="ysqlsh" href="/latest/admin/ysqlsh/">
+ysqlsh
+</a>
+</li>
+<li>
+<a title="ycqlsh" href="/latest/admin/ycqlsh/">
+ycqlsh
+</a>
+</li>
+<li>
+<a title="yb-admin" href="/latest/admin/yb-admin/">
+yb-admin
+</a>
+</li>
+<li>
+<a title="yb-ts-cli" href="/latest/admin/yb-ts-cli/">
+yb-ts-cli
+</a>
+</li>
+<li>
+<a title="ysql_dump" href="/latest/admin/ysql-dump/">
+ysql_dump
+</a>
+</li>
+<li>
+<a title="ysql_dumpall" href="/latest/admin/ysql-dumpall/">
+ysql_dumpall
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Configuration" href="/latest/reference/configuration/">
+Configuration
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="yb-tserver" href="/latest/reference/configuration/yb-tserver/">
+yb-tserver
+</a>
+</li>
+<li>
+<a title="yb-master" href="/latest/reference/configuration/yb-master/">
+yb-master
+</a>
+</li>
+<li>
+<a title="yugabyted" href="/latest/reference/configuration/yugabyted/">
+yugabyted
+</a>
+</li>
+<li>
+<a title="Default ports" href="/latest/reference/configuration/default-ports/">
+Default ports
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Drivers" href="/latest/reference/drivers/">
+Drivers
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Client drivers for YSQL" href="/latest/reference/drivers/ysql-client-drivers/">
+Client drivers for YSQL
+</a>
+</li>
+<li>
+<a title="Client drivers for YCQL" href="/latest/reference/drivers/ycql-client-drivers/">
+Client drivers for YCQL
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Connectors" href="/latest/reference/connectors/">
+Connectors
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Kafka Connect YugabyteDB" href="/latest/reference/connectors/kafka-connect-yugabytedb/">
+Kafka Connect YugabyteDB
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="Third party tools" href="/latest/tools/">
+Third party tools
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="DBeaver" href="/latest/tools/dbeaver-ysql/">
+DBeaver
+</a>
+</li>
+<li>
+<a title="DbSchema" href="/latest/tools/dbschema/">
+DbSchema
+</a>
+</li>
+<li>
+<a title="pgAdmin" href="/latest/tools/pgadmin/">
+pgAdmin
+</a>
+</li>
+<li>
+<a title="SQL Workbench/J" href="/latest/tools/sql-workbench/">
+SQL Workbench/J
+</a>
+</li>
+<li>
+<a title="TablePlus" href="/latest/tools/tableplus/">
+TablePlus
+</a>
+
+</li>
+<li>
+<a title="Visual Studio Code" href="/latest/tools/visualstudioworkbench/">
+Visual Studio Code
+</a>
+</li>
+</ul>
+</li>
+<li class="open">
+<a title="Sample datasets" href="/latest/sample-data/">
+Sample datasets
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Chinook" href="/latest/sample-data/chinook/">
+Chinook
+</a>
+</li>
+<li class="open">
+<a class="current" title="Northwind" href="/latest/sample-data/northwind/">
+Northwind
+</a>
+</li>
+<li>
+<a title="PgExercises" href="/latest/sample-data/pgexercises/">
+PgExercises
+</a>
+</li>
+<li>
+<a title="SportsDB" href="/latest/sample-data/sportsdb/">
+SportsDB
+</a>
+</li>
+<li>
+<a title="Retail Analytics" href="/latest/sample-data/retail-analytics/">
+Retail Analytics
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a class="node-toggle" title="RELEASES">
+RELEASES
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Releases" href="/latest/releases/">
+Releases
+</a>
+</li>
+<li>
+<a title="Releases overview" href="/latest/releases/releases-overview/">
+Releases overview
+</a>
+</li>
+<li>
+<a title="Release versioning" href="/latest/releases/versioning/">
+Release versioning
+</a>
+</li>
+<li>
+<a title="What&#39;s new" href="/latest/releases/whats-new/">
+What&#39;s new
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="v2.9 (latest)" href="/latest/releases/whats-new/latest-release/">
+v2.9 (latest)
+</a>
+</li>
+<li>
+<a title="v2.6 (stable)" href="/latest/releases/whats-new/stable-release/">
+v2.6 (stable)
+</a>
+</li>
+</ul>
+</li>
+<li>
+
+<a title="Earlier releases" href="/latest/releases/earlier-releases/">
+Earlier releases
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="v2.4 series" href="/latest/releases/earlier-releases/v2.4/">
+v2.4 series
+</a>
+</li>
+<li>
+<a title="v2.5 series" href="/latest/releases/earlier-releases/v2.5/">
+v2.5 series
+</a>
+</li>
+<li>
+<a title="v2.3.3" href="/latest/releases/earlier-releases/v2.3.3/">
+v2.3.3
+</a>
+</li>
+<li>
+<a title="v2.3.2" href="/latest/releases/earlier-releases/v2.3.2/">
+v2.3.2
+</a>
+</li>
+<li>
+<a title="v2.3.1" href="/latest/releases/earlier-releases/v2.3.1/">
+v2.3.1
+</a>
+</li>
+<li>
+<a title="v2.3.0" href="/latest/releases/earlier-releases/v2.3.0/">
+v2.3.0
+</a>
+</li>
+<li>
+<a title="v2.2.0 series" href="/latest/releases/earlier-releases/v2.2.0/">
+v2.2.0 series
+</a>
+</li>
+<li>
+<a title="v2.1.8" href="/latest/releases/earlier-releases/v2.1.8/">
+v2.1.8
+</a>
+</li>
+<li>
+<a title="v2.1.6" href="/latest/releases/earlier-releases/v2.1.6/">
+v2.1.6
+</a>
+</li>
+<li>
+<a title="v2.1.5" href="/latest/releases/earlier-releases/v2.1.5/">
+v2.1.5
+</a>
+</li>
+<li>
+<a title="v2.1.4" href="/latest/releases/earlier-releases/v2.1.4/">
+v2.1.4
+</a>
+</li>
+<li>
+<a title="v2.1.3" href="/latest/releases/earlier-releases/v2.1.3/">
+v2.1.3
+</a>
+</li>
+<li>
+<a title="v2.1.2" href="/latest/releases/earlier-releases/v2.1.2/">
+v2.1.2
+</a>
+</li>
+<li>
+<a title="v2.1.1" href="/latest/releases/earlier-releases/v2.1.1/">
+v2.1.1
+</a>
+</li>
+<li>
+<a title="v2.1.0" href="/latest/releases/earlier-releases/v2.1.0/">
+v2.1.0
+</a>
+</li>
+<li>
+<a title="v2.0.11" href="/latest/releases/earlier-releases/v2.0.11/">
+v2.0.11
+</a>
+</li>
+<li>
+<a title="v2.0.10" href="/latest/releases/earlier-releases/v2.0.10/">
+v2.0.10
+</a>
+</li>
+<li>
+<a title="v2.0.9" href="/latest/releases/earlier-releases/v2.0.9/">
+v2.0.9
+</a>
+</li>
+<li>
+<a title="v2.0.8" href="/latest/releases/earlier-releases/v2.0.8/">
+v2.0.8
+</a>
+</li>
+<li>
+<a title="v2.0.7" href="/latest/releases/earlier-releases/v2.0.7/">
+v2.0.7
+</a>
+</li>
+<li>
+<a title="v2.0.6" href="/latest/releases/earlier-releases/v2.0.6/">
+v2.0.6
+</a>
+</li>
+<li>
+<a title="v2.0.5" href="/latest/releases/earlier-releases/v2.0.5/">
+v2.0.5
+</a>
+</li>
+<li>
+<a title="v2.0.3" href="/latest/releases/earlier-releases/v2.0.3/">
+v2.0.3
+</a>
+</li>
+<li>
+<a title="v2.0.1" href="/latest/releases/earlier-releases/v2.0.1/">
+v2.0.1
+</a>
+</li>
+<li>
+<a title="v2.0.0" href="/latest/releases/earlier-releases/v2.0.0/">
+v2.0.0
+</a>
+</li>
+<li>
+<a title="v1.3.1" href="/latest/releases/earlier-releases/v1.3.1/">
+v1.3.1
+</a>
+</li>
+<li>
+<a title="v1.3.0" href="/latest/releases/earlier-releases/v1.3.0/">
+v1.3.0
+</a>
+</li>
+<li>
+<a title="v1.2.12" href="/latest/releases/earlier-releases/v1.2.12/">
+v1.2.12
+</a>
+</li>
+<li>
+<a title="v1.2.11" href="/latest/releases/earlier-releases/v1.2.11/">
+v1.2.11
+</a>
+</li>
+<li>
+<a title="v1.2.10" href="/latest/releases/earlier-releases/v1.2.10/">
+v1.2.10
+</a>
+</li>
+<li>
+<a title="v1.2.9" href="/latest/releases/earlier-releases/v1.2.9/">
+v1.2.9
+</a>
+</li>
+
+<li>
+<a title="v1.2.8" href="/latest/releases/earlier-releases/v1.2.8/">
+v1.2.8
+</a>
+</li>
+<li>
+<a title="v1.2.6" href="/latest/releases/earlier-releases/v1.2.6/">
+v1.2.6
+</a>
+</li>
+<li>
+<a title="v1.2.5" href="/latest/releases/earlier-releases/v1.2.5/">
+v1.2.5
+</a>
+</li>
+<li>
+<a title="v1.2.4" href="/latest/releases/earlier-releases/v1.2.4/">
+v1.2.4
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a class="node-toggle" title="FAQ">
+FAQ
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="Comparisons" href="/latest/comparisons/">
+Comparisons
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Amazon Aurora" href="/latest/comparisons/amazon-aurora/">
+Amazon Aurora
+</a>
+</li>
+<li>
+<a title="Google Cloud Spanner" href="/latest/comparisons/google-spanner/">
+Google Cloud Spanner
+</a>
+</li>
+<li>
+<a title="CockroachDB" href="/latest/comparisons/cockroachdb/">
+CockroachDB
+</a>
+</li>
+<li>
+<a title="TiDB" href="/latest/comparisons/tidb/">
+TiDB
+</a>
+</li>
+<li>
+<a title="Vitess" href="/latest/comparisons/vitess/">
+Vitess
+</a>
+</li>
+<li>
+<a title="MongoDB" href="/latest/comparisons/mongodb/">
+MongoDB
+</a>
+</li>
+<li>
+<a title="FoundationDB" href="/latest/comparisons/foundationdb/">
+FoundationDB
+</a>
+</li>
+<li>
+<a title="Amazon DynamoDB" href="/latest/comparisons/amazon-dynamodb/">
+Amazon DynamoDB
+</a>
+</li>
+<li>
+<a title="Azure Cosmos DB" href="/latest/comparisons/azure-cosmos/">
+Azure Cosmos DB
+</a>
+</li>
+<li>
+<a title="Apache Cassandra" href="/latest/comparisons/cassandra/">
+Apache Cassandra
+</a>
+ </li>
+<li>
+<a title="PostgreSQL" href="/latest/comparisons/postgresql/">
+PostgreSQL
+</a>
+</li>
+<li>
+<a title="Redis in-memory store" href="/latest/comparisons/redis/">
+Redis in-memory store
+</a>
+</li>
+<li>
+<a title="Apache HBase" href="/latest/comparisons/hbase/">
+Apache HBase
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="FAQs" href="/latest/faq/">
+FAQs
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="General FAQ" href="/latest/faq/general/">
+General FAQ
+</a>
+</li>
+<li>
+<a title="Operations FAQ" href="/latest/faq/operations-faq/">
+Operations FAQ
+</a>
+</li>
+<li>
+<a title="API compatibility FAQ" href="/latest/faq/compatibility/">
+API compatibility FAQ
+</a>
+</li>
+<li>
+<a title="Yugabyte Platform FAQ" href="/latest/faq/yugabyte-platform/">
+Yugabyte Platform FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a class="node-toggle" title="MISC">
+MISC
+<i class="fas fa-bars"></i>
+</a>
+<ul>
+<li>
+<a title="YEDIS" href="/latest/yedis/">
+YEDIS
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Quick start" href="/latest/yedis/quick-start/">
+Quick start
+</a>
+</li>
+<li>
+<a title="Develop" href="/latest/yedis/develop/">
+Develop
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Build an application" href="/latest/yedis/develop/client-drivers/">
+Build an application
+</a>
+</li>
+<li>
+<a title="C#" href="/latest/yedis/develop/client-drivers/yedis/csharp/">
+C#
+</a>
+</li>
+<li>
+<a title="C&#43;&#43;" href="/latest/yedis/develop/client-drivers/yedis/cpp/">
+C&#43;&#43;
+</a>
+</li>
+<li>
+<a title="Go" href="/latest/yedis/develop/client-drivers/yedis/go/">
+Go
+</a>
+</li>
+<li>
+<a title="Java" href="/latest/yedis/develop/client-drivers/yedis/java/">
+Java
+</a>
+</li>
+<li>
+<a title="NodeJS" href="/latest/yedis/develop/client-drivers/yedis/nodejs/">
+NodeJS
+</a>
+</li>
+<li>
+<a title="Python" href="/latest/yedis/develop/client-drivers/yedis/python/">
+Python
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a title="API reference" href="/latest/yedis/api/">
+API reference
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="APPEND" href="/latest/yedis/api/append/">
+APPEND
+</a>
+</li>
+<li>
+<a title="AUTH" href="/latest/yedis/api/auth/">
+AUTH
+</a>
+</li>
+<li>
+<a title="CONFIG" href="/latest/yedis/api/config/">
+CONFIG
+</a>
+</li>
+<li>
+<a title="CREATEDB" href="/latest/yedis/api/createdb/">
+CREATEDB
+</a>
+</li>
+<li>
+<a title="DELETEDB" href="/latest/yedis/api/deletedb/">
+DELETEDB
+</a>
+</li>
+<li>
+<a title="LISTDB" href="/latest/yedis/api/listdb/">
+LISTDB
+</a>
+</li>
+<li>
+<a title="SELECT " href="/latest/yedis/api/select/">
+SELECT
+</a>
+</li>
+<li>
+<a title="DEL" href="/latest/yedis/api/del/">
+DEL
+</a>
+</li>
+<li>
+<a title="ECHO" href="/latest/yedis/api/echo/">
+ECHO
+</a>
+</li>
+<li>
+<a title="EXISTS" href="/latest/yedis/api/exists/">
+EXISTS
+</a>
+</li>
+<li>
+<a title="EXPIRE" href="/latest/yedis/api/expire/">
+
+EXPIRE
+</a>
+</li>
+<li>
+<a title="EXPIREAT" href="/latest/yedis/api/expireat/">
+EXPIREAT
+</a>
+</li>
+<li>
+<a title="FLUSHALL" href="/latest/yedis/api/flushall/">
+FLUSHALL
+</a>
+</li>
+<li>
+<a title="FLUSHDB" href="/latest/yedis/api/flushdb/">
+FLUSHDB
+</a>
+</li>
+<li>
+<a title="GET" href="/latest/yedis/api/get/">
+GET
+</a>
+</li>
+<li>
+<a title="GETRANGE" href="/latest/yedis/api/getrange/">
+GETRANGE
+</a>
+</li>
+<li>
+<a title="GETSET" href="/latest/yedis/api/getset/">
+GETSET
+</a>
+</li>
+<li>
+<a title="HDEL" href="/latest/yedis/api/hdel/">
+HDEL
+</a>
+</li>
+<li>
+<a title="HEXISTS" href="/latest/yedis/api/hexists/">
+HEXISTS
+</a>
+</li>
+<li>
+<a title="HGET" href="/latest/yedis/api/hget/">
+HGET
+</a>
+</li>
+<li>
+<a title="HGETALL" href="/latest/yedis/api/hgetall/">
+HGETALL
+</a>
+</li>
+<li>
+<a title="HINCRBY" href="/latest/yedis/api/hincrby/">
+HINCRBY
+</a>
+</li>
+<li>
+<a title="HKEYS" href="/latest/yedis/api/hkeys/">
+HKEYS
+</a>
+</li>
+<li>
+<a title="HLEN" href="/latest/yedis/api/hlen/">
+HLEN
+</a>
+</li>
+<li>
+<a title="HMGET" href="/latest/yedis/api/hmget/">
+HMGET
+</a>
+</li>
+<li>
+<a title="HMSET" href="/latest/yedis/api/hmset/">
+HMSET
+</a>
+</li>
+<li>
+<a title="HSET" href="/latest/yedis/api/hset/">
+HSET
+</a>
+</li>
+<li>
+<a title="HSTRLEN" href="/latest/yedis/api/hstrlen/">
+HSTRLEN
+</a>
+</li>
+
+<li>
+<a title="HVALS" href="/latest/yedis/api/hvals/">
+HVALS
+</a>
+</li>
+<li>
+<a title="INCR" href="/latest/yedis/api/incr/">
+INCR
+</a>
+</li>
+<li>
+<a title="INCRBY" href="/latest/yedis/api/incrby/">
+INCRBY
+</a>
+</li>
+<li>
+<a title="KEYS" href="/latest/yedis/api/keys/">
+KEYS
+</a>
+</li>
+<li>
+<a title="MONITOR" href="/latest/yedis/api/monitor/">
+MONITOR
+</a>
+</li>
+<li>
+<a title="PEXPIRE" href="/latest/yedis/api/pexpire/">
+PEXPIRE
+</a>
+</li>
+<li>
+<a title="PEXPIREAT" href="/latest/yedis/api/pexpireat/">
+PEXPIREAT
+</a>
+</li>
+<li>
+<a title="PTTL" href="/latest/yedis/api/pttl/">
+PTTL
+</a>
+</li>
+<li>
+<a title="ROLE" href="/latest/yedis/api/role/">
+ROLE
+</a>
+</li>
+<li>
+<a title="SADD" href="/latest/yedis/api/sadd/">
+SADD
+</a>
+</li>
+<li>
+<a title="SCARD" href="/latest/yedis/api/scard/">
+SCARD
+</a>
+</li>
+<li>
+<a title="RENAME" href="/latest/yedis/api/rename/">
+RENAME
+</a>
+</li>
+<li>
+<a title="SET" href="/latest/yedis/api/set/">
+SET
+</a>
+</li>
+<li>
+<a title="SETEX" href="/latest/yedis/api/setex/">
+SETEX
+</a>
+</li>
+<li>
+<a title="PSETEX" href="/latest/yedis/api/psetex/">
+PSETEX
+</a>
+</li>
+<li>
+<a title="SETRANGE" href="/latest/yedis/api/setrange/">
+SETRANGE
+</a>
+</li>
+<li>
+<a title="SISMEMBER" href="/latest/yedis/api/sismember/">
+SISMEMBER
+</a>
+</li>
+<li>
+<a title="SMEMBERS" href="/latest/yedis/api/smembers/">
+SMEMBERS
+</a>
+</li>
+<li>
+<a title="SREM" href="/latest/yedis/api/srem/">
+SREM
+</a>
+</li>
+<li>
+<a title="STRLEN" href="/latest/yedis/api/strlen/">
+STRLEN
+</a>
+</li>
+<li>
+<a title="ZRANGE" href="/latest/yedis/api/zrange/">
+ZRANGE
+</a>
+</li>
+<li>
+<a title="TSADD" href="/latest/yedis/api/tsadd/">
+TSADD
+</a>
+</li>
+<li>
+<a title="TSCARD" href="/latest/yedis/api/tscard/">
+TSCARD
+</a>
+</li>
+<li>
+<a title="TSGET" href="/latest/yedis/api/tsget/">
+TSGET
+</a>
+</li>
+<li>
+<a title="TSLASTN" href="/latest/yedis/api/tslastn/">
+TSLASTN
+</a>
+</li>
+<li>
+<a title="TSRANGEBYTIME" href="/latest/yedis/api/tsrangebytime/">
+TSRANGEBYTIME
+</a>
+</li>
+<li>
+<a title="TSREM" href="/latest/yedis/api/tsrem/">
+TSREM
+</a>
+</li>
+<li>
+<a title="TSREVRANGEBYTIME" href="/latest/yedis/api/tsrevrangebytime/">
+TSREVRANGEBYTIME
+</a>
+</li>
+<li>
+<a title="TTL" href="/latest/yedis/api/ttl/">
+TTL
+</a>
+</li>
+<li>
+<a title="ZADD" href="/latest/yedis/api/zadd/">
+ZADD
+</a>
+</li>
+<li>
+<a title="ZCARD" href="/latest/yedis/api/zcard/">
+ZCARD
+</a>
+</li>
+<li>
+<a title="ZRANGEBYSCORE" href="/latest/yedis/api/zrangebyscore/">
+ZRANGEBYSCORE
+</a>
+</li>
+<li>
+<a title="ZREM" href="/latest/yedis/api/zrem/">
+ZREM
+</a>
+</li>
+<li>
+<a title="ZREVRANGE" href="/latest/yedis/api/zrevrange/">
+ZREVRANGE
+</a>
+</li>
+<li>
+<a title="ZSCORE" href="/latest/yedis/api/zscore/">
+ZSCORE
+</a>
+</li>
+<li>
+<a title="PUBSUB" href="/latest/yedis/api/pubsub/">
+PUBSUB
+</a>
+</li>
+<li>
+<a title="PUBLISH" href="/latest/yedis/api/publish/">
+PUBLISH
+</a>
+</li>
+<li>
+<a title="SUBSCRIBE" href="/latest/yedis/api/subscribe/">
+SUBSCRIBE
+</a>
+</li>
+<li>
+<a title="UNSUBSCRIBE" href="/latest/yedis/api/unsubscribe/">
+UNSUBSCRIBE
+</a>
+</li>
+<li>
+<a title="PSUBSCRIBE" href="/latest/yedis/api/psubscribe/">
+PSUBSCRIBE
+</a>
+</li>
+<li>
+<a title="PUNSUBSCRIBE" href="/latest/yedis/api/punsubscribe/">
+PUNSUBSCRIBE
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a title="Legal" href="/latest/legal/">
+Legal
+</a>
+<a class="node-toggle">
+<i class="fas fa-plus-square closed"></i>
+<i class="fas fa-minus-square open"></i>
+</a>
+<ul>
+<li>
+<a title="Third party software" href="/latest/legal/third-party-software/">
+Third party software
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<article class="article">
+<div class="wrapper">
+<div class="content-flex-wrapper">
+<div class="content-flex-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="breadcrumbs">
+<span class="mobile-only">
+<label class="toggle-button" for="toggle-drawer">
+Home
+</label>
+<i> > </i>
+</span>
+<a title="Sample datasets" href="/latest/sample-data/">
+Sample datasets</a>
+<i>></i>
+</div>
+<h1>Northwind sample database </h1>
+<div id="toc-static"><nav id="TableOfContents">
+<ul>
+<li><a href="#about-the-northwind-sample-database">About the Northwind sample database</a></li>
+<li><a href="#install-the-northwind-sample-database">Install the Northwind sample database</a>
+<ul>
+<li><a href="#open-the-ysql-shell">Open the YSQL shell</a></li>
+<li><a href="#create-the-northwind-database">Create the Northwind database</a></li>
+<li><a href="#build-the-tables-and-objects">Build the tables and objects</a></li>
+<li><a href="#load-the-sample-data">Load the sample data</a></li>
+</ul>
+</li>
+<li><a href="#explore-the-northwind-database">Explore the Northwind database</a></li>
+</ul>
+</nav></div>
+<p>Install the PostgreSQL-compatible version of the Northwind dataset on the YugabyteDB distributed SQL database.</p>
+<p>You can install and use the Northwind sample database using:</p>
+<ul>
+<li>A local installation of YugabyteDB. To install YugabyteDB, refer to <a href="../../quick-start/">Quick Start</a>.</li>
+<li>A local installation of the YugabyteDB client shells that you use to connect to a cluster in Yugabyte Cloud. To connect to your Yugabyte Cloud cluster, refer to <a href="../../yugabyte-cloud/cloud-basics/connect-to-clusters/#connect-via-client-shell">Connect via Client Shell</a>. To get started with Yugabyte Cloud, refer to <a href="../../yugabyte-cloud/cloud-basics/">Get Started</a>.</li>
+</ul>
+<p>In either case, you use the YugabyteDB SQL shell (<a href="../../admin/ysqlsh/">ysqlsh</a>) CLI to interact with YugabyteDB using <a href="../../api/ysql/">YSQL</a>.</p>
+<h2 id="about-the-northwind-sample-database">About the Northwind sample database</h2>
+<p>The Northwind database is a sample database that was originally created by Microsoft and used as the basis for their tutorials in a variety of database products for decades. The Northwind database contains the sales data for a fictitious company called “Northwind Traders,” which imports and exports specialty foods from around the world. The Northwind database is an excellent tutorial schema for a small-business ERP, with customers, orders, inventory, purchasing, suppliers, shipping, employees, and single-entry accounting. The Northwind database has since been ported to a variety of non-Microsoft databases, including PostgreSQL.</p>
+<p>The Northwind dataset includes sample data for the following.</p>
+<ul>
+<li><strong>Suppliers</strong>: Suppliers and vendors of Northwind</li>
+<li><strong>Customers</strong>: Customers who buy products from Northwind</li>
+<li><strong>Employees</strong>: Employee details of Northwind traders</li>
+<li><strong>Products</strong>: Product information</li>
+<li><strong>Shippers</strong>: The details of the shippers who ship the products from the traders to the end-customers</li>
+<li><strong>Orders and Order_Details</strong>: Sales Order transactions taking place between the customers &amp; the company</li>
+</ul>
+<p>The Northwind sample database includes 14 tables and the table relationships are showcased in the following entity relationship diagram.</p>
+<p><img src="/images/sample-data/northwind/northwind-er-diagram.png" alt="Northwind ER diagram"></p>
+<h2 id="install-the-northwind-sample-database">Install the Northwind sample database</h2>
+<p>The Northwind SQL scripts reside in the <code>share</code> folder of your YugabyteDB or client shell installation. They can also be found in the <a href="https://github.com/yugabyte/yugabyte-db/tree/master/sample" target="_blank"><code>sample</code> directory of the YugabyteDB GitHub repository<i class="link-external-icon fas fa-external-link-alt"></i></a>. The following files will be used for this exercise:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/sample/northwind_ddl.sql" target="_blank">northwind_ddl.sql<i class="link-external-icon fas fa-external-link-alt"></i></a> — Creates tables and other database objects</li>
+<li><a href="https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/sample/northwind_data.sql" target="_blank">northwind_data.sql<i class="link-external-icon fas fa-external-link-alt"></i></a> — Loads the sample data</li>
+</ul>
+<p>Follow the steps here to install the Northwind sample database.</p>
+<h3 id="open-the-ysql-shell">Open the YSQL shell</h3>
+<p>If you are using a local installation of YugabyteDB, run the <code>ysqlsh</code> command from the <code>yugabyte</code> root directory.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./bin/ysqlsh
+</code></pre></div><p>If you are connecting to Yugabyte Cloud, run the connection string for your cluster from the the <code>yugabyte-client</code> root directory. Refer to <a href="../../yugabyte-cloud/cloud-basics/connect-to-clusters/#connect-via-client-shell">Connect via Client Shell</a>.</p>
+<h3 id="create-the-northwind-database">Create the Northwind database</h3>
+<p>To create the Northwind database, run the following <code>CREATE DATABASE</code> statement.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql"><span style="color:#008000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">DATABASE</span><span style="color:#bbb"> </span>northwind;<span style="color:#bbb">
+</span></code></pre></div><p>Confirm that you have the Northwind database by listing the databases on your cluster.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">yugabyte<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="">\</span>l<span style="color:#bbb">
+</span></code></pre></div><p>Connect to the Northwind database.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">yugabyte<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="">\</span>c<span style="color:#bbb"> </span>northwind<span style="color:#bbb">
+</span></code></pre></div><h3 id="build-the-tables-and-objects">Build the tables and objects</h3>
+<p>To build the tables and database objects, execute the <code>northwind_ddl.sql</code> SQL script.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">northwind<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="">\</span>i<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">share</span><span style="color:#666">/</span>northwind_ddl<span style="color:#666">.</span>sql<span style="color:#bbb">
+</span></code></pre></div><p>You can verify that all 14 tables have been created by running the <code>\d</code> command.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">northwind<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="">\</span>d<span style="color:#bbb">
+</span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output">                List of relations
+ Schema |          Name          | Type  | Owner 
+--------+------------------------+-------+-------
+ public | categories             | table | admin
+ public | customer_customer_demo | table | admin
+ public | customer_demographics  | table | admin
+ public | customers              | table | admin
+ public | employee_territories   | table | admin
+ public | employees              | table | admin
+ public | order_details          | table | admin
+ public | orders                 | table | admin
+ public | products               | table | admin
+ public | region                 | table | admin
+ public | shippers               | table | admin
+ public | suppliers              | table | admin
+ public | territories            | table | admin
+ public | us_states              | table | admin
+(14 rows)
+</code></pre><h3 id="load-the-sample-data">Load the sample data</h3>
+<p>To load the <code>northwind</code> database with sample data, run the <code>\i</code> command to execute commands in the <code>northwind_data.sql</code> file.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">northwind<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="">\</span>i<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">share</span><span style="color:#666">/</span>northwind_data<span style="color:#666">.</span>sql<span style="color:#bbb">
+</span></code></pre></div><p>To verify that you have some data to work with, you can run a simple SELECT statement to pull data from the <code>customers</code> table.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plpgsql" data-lang="plpgsql">northwind<span style="color:#666">=#</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>customers<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIMIT</span><span style="color:#bbb"> </span><span style="color:#666">2</span>;<span style="color:#bbb">
+</span></code></pre></div><pre tabindex="0"><code class="language-output" data-lang="output"> customer_id |       company_name        | contact_name |    contact_title    |      address       |   city    | region | postal_code | country |     phone     |     fax     
+-------------+---------------------------+--------------+---------------------+--------------------+-----------+--------+-------------+---------+---------------+-------------
+ FAMIA       | Familia Arquibaldo        | Aria Cruz    | Marketing Assistant | Rua Orós, 92       | Sao Paulo | SP     | 05442-030   | Brazil  | (11) 555-9857 | 
+ VINET       | Vins et alcools Chevalier | Paul Henriot | Accounting Manager  | 59 rue de l'Abbaye | Reims     |        | 51100       | France  | 26.47.15.10   | 26.47.15.11
+(2 rows)
+</code></pre><h2 id="explore-the-northwind-database">Explore the Northwind database</h2>
+<p>That’s it! You are now ready to start exploring the Northwind database and YugabyteDB features using the command line or your favorite PostgreSQL tool.</p>
+</div>
+<div class="menu-flex-container">
+<div class="toc-container" id="toc-aside"><nav id="TableOfContents">
+<ul>
+<li><a href="#about-the-northwind-sample-database">About the Northwind sample database</a></li>
+<li><a href="#install-the-northwind-sample-database">Install the Northwind sample database</a>
+<ul>
+<li><a href="#open-the-ysql-shell">Open the YSQL shell</a></li>
+<li><a href="#create-the-northwind-database">Create the Northwind database</a></li>
+<li><a href="#build-the-tables-and-objects">Build the tables and objects</a></li>
+<li><a href="#load-the-sample-data">Load the sample data</a></li>
+</ul>
+</li>
+<li><a href="#explore-the-northwind-database">Explore the Northwind database</a></li>
+</ul>
+</nav></div>
+</div>
+</div>
+</div>
+<div class="footer-links">
+<div>
+<div class="help-footer-btn">
+<i class="fas fa-question-circle"></i> Ask our community
+</div>
+<ul class="help-footer-menu">
+<li>
+<a href="https://www.yugabyte.com/slack" target="_blank">
+<i class="fab fa-slack"></i> Slack
+</a>
+</li>
+<li>
+<a href="https://github.com/yugabyte/yugabyte-db" target="_blank">
+<i class="fab fa-github"></i> Github
+</a>
+</li>
+<li>
+<a href="https://forum.yugabyte.com/" target="_blank">
+<i class="fas fa-comment-alt"></i> Forum
+</a>
+</li>
+<li>
+<a href="https://stackoverflow.com/questions/tagged/yugabyte-db" target="_blank">
+<i class="fab fa-stack-overflow"></i> StackOverflow
+</a>
+</li>
+</ul>
+</div>
+</div>
+</article>
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+</div>
+<div class="modal-close-icon"><i class="fas fa-times"></i></div>
+</div>
+</div>
+</div>
+<div class="results" role="status" aria-live="polite">
+<div class="scrollable">
+<div class="wrapper">
+<div class="meta"></div>
+<div class="list"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<footer class="footer footer-content">
+<div class="container-fluid">
+<div class="logo">
+<img alt="Yugabyte" src="/images/ybdocs-white.png" class="nav-logo not-scrolled" />
+</div>
+<div class="footer-menu">
+<a href="https://www.yugabyte.com/contact/">
+Contact Us
+</a>
+</div>
+<div class="copyright">
+Copyright &copy; 2017-2021 Yugabyte, Inc. <span style="white-space: nowrap">All rights reserved.</span>
+</div>
+</div>
+</footer>
+<script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+<script src="/js/application.js"></script>
+<script>
+      (function($) {
+        const offset =  30 ;
+        const offsetTOC = 95;
+
+        $(document).ready(function() {
+          $.fn.toc = function(options, callback) {
+            const defaults = {
+              headers: "h1, h2, h3, h4",
+            },
+            settings = $.extend(defaults, options);
+            let queryHeaders = '';
+            if (typeof settings.isTocNested == 'number') {
+              for (let i = 2; i < settings.isTocNested+1; i++) {
+                queryHeaders += "h"+i+":visible,";
+              }
+              queryHeaders = queryHeaders.slice(0, -1);
+            } else {
+              queryHeaders = "h2:visible,h3:visible,h4:visible,h5:visible,h6:visible";
+            }
+            settings.headers = settings.isTocNested ? queryHeaders : "h2:visible";
+            let headers = $(settings.headers);
+            headers.on("click", function() {
+              window.location.hash = this.id
+            }).addClass("clickable-header");
+            
+            if (!settings.isTocNested) {
+              $(this).find('nav > ul > li > ul').remove();
+              $('#toc-static nav > ul > li > ul > li > ul').remove();
+            } else if (typeof settings.isTocNested == 'number') {
+              let query = 'nav > ul ' + (' > li > ul').repeat([settings.isTocNested-1]);
+              $(this).find(query).remove();
+            }
+            callback();
+            $(this).addClass("ready");
+          }
+          function renderTOC(callback) {
+            if ($("#toc-aside").length) {
+              $("#toc-aside").toc({
+                  isTocNested: pageConfig.isTocNested
+              }, callback);
+            } else {
+              callback();
+            }
+          }
+          renderTOC(() => initAnchorsAndFeedback());
+
+          let $navigationLinks = $("#toc-aside ul > li > a");
+          let $sections = $(".clickable-header");
+          let sectionIdTonavigationLink = {};
+          $sections.each(function() {
+              var id = $(this).attr("id");
+              sectionIdTonavigationLink[id] = $("#toc-aside ul > li > a[href='#" + id + "']")
+          });
+          function highlightNavigation() {
+            var scrollPosition = $(window).scrollTop();
+            $sections.each(function() {
+                var currentSection = $(this);
+                var sectionTop = currentSection.offset().top - 70;
+                if (scrollPosition >= sectionTop) {
+                    var id = currentSection.attr("id");
+                    var $currentLink = sectionIdTonavigationLink[id];
+                    if (!$currentLink.hasClass("active-scroll")) {
+                        $navigationLinks.removeClass("active-scroll");
+                        $currentLink.addClass("active-scroll")
+                    }
+                    return
+                }
+            })
+          }
+          $(window).scroll(highlightNavigation);
+          $(document).ready(highlightNavigation);
+        });
+
+        const initAnchorsAndFeedback = () => {
+          let queryHeaders = [];
+            if (pageConfig && typeof pageConfig.isTocNested == 'number') {
+              for (let i = 2; i < pageConfig.isTocNested+1; i++) {
+                queryHeaders.push(`h${i}`);
+              }
+            } else {
+              queryHeaders = ['h2', 'h3', 'h4', 'h5', 'h6'];
+            }
+
+          /* Add permanent link next to the headers */
+          const selector = queryHeaders.map(h => `.article:not(#feedback) ${h}`).join(', ');
+          const $headers = $(selector).filter(function () {
+            return $(this).closest('ul.nav-tabs + .tab-content').length === 0;
+          });
+
+          
+          $.each($headers, function (i, value) {
+            let cnt = document.createElement("div");
+            cnt.setAttribute("class", "links");
+            let a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + value.id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = '<i class="fa fa-link"></i>';
+            $headers[i].appendChild(a);
+            cnt.appendChild(a);
+            $headers[i].appendChild(cnt);
+          });
+        }
+
+        $(document).ready(() => {
+          $('#side-navigation').stick_in_parent({
+            offset_top: offset,
+          });
+          $('#drawerMenu a.node-toggle').click(() => {
+            setTimeout(() => {
+              $('#side-navigation').trigger('sticky_kit:recalc');
+            }, 300);
+          });
+
+          $('#toc-aside').stick_in_parent({
+            offset_top: offsetTOC,
+          });
+          $('#toc-aside a').click(() => {
+            setTimeout(() => {
+              $('#toc-aside').trigger('sticky_kit:recalc');
+            }, 300);
+          });
+          $('.help-footer-btn').click(() => {
+            $('.help-footer-btn, .help-footer-menu').toggleClass('shown');
+          });
+        });
+      })(jQuery);
+    </script>
+<script>
+      
+      $(document).ready(() => {
+        const url = document.location.toString();
+        if (url.match('#')) {
+          $('.tab-pane').removeClass('active').removeClass('show');
+          $('.tab-pane#'+url.split('#')[1]).addClass('active').addClass('show');
+
+           
+        } 
+
+        $('.nav-tabs li a, .nav-tabs-alt li a').click(function (e) {     
+          
+          let href = $(this).attr('href');    
+          
+          
+          $('.nav-tabs li a, .nav-tabs-alt li a').removeClass('active');
+          
+          
+          $('.nav-tabs li a[href="'+href+'"], .nav-tabs-alt li a[href="'+href+'"]').addClass('active');
+
+          const hashValue = $.attr(this, 'href');
+          if (history.pushState) {
+            history.pushState(null, null, hashValue);
+          } else {
+            window.location.hash = hashValue.substr(1);
+          }
+
+          
+          $('.tab-pane').removeClass('active').removeClass('show');
+          $('.tab-pane'+href).addClass('active').addClass('show');
+        })
+      });
+    </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      "use strict";
+
+      const feedback_widget = $('.feedback_widget');
+      const feedback_widget_payload = $('.feedback_widget #action_payload_from');
+      const feedback_widget_wrapper = $('.widget-wrapper');
+
+      $(document).on('feedback:reset', function(e) {
+        const headers = document.querySelector('.article:not(#feedback)').querySelectorAll("h1, h2, h3, h4, h5, h6");  
+        $(headers).removeClass('expanded');
+        feedback_widget.removeClass('active active_section').css('top', '');
+        feedback_widget_payload.val('footer');
+        
+        $("[class^=gr-top-]").remove();
+      });
+    });
+  
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-104956980-3"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-104956980-3', {
+        'anonymize_ip': true
+      });
+       
+      var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              gtag('event', 'outbound', {
+                'event_category': action,
+                'value': item.href
+              });
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        if (query) {
+          query.addEventListener('blur', function() {
+            if (this.value) {
+              var path = document.location.pathname;
+              gtag('event', 'search', {
+                search_term: path + '?q=' + this.value
+              });
+            }
+          });
+        }
+    </script>
+<script>
+      window.onload = function() {
+        previousPageHash = window.location.hash;
+        if (previousPageHash) {
+          sessionStorage.setItem('previousPageHash', previousPageHash);
+          if (previousPageHash && $('.nav-tabs a').length > 0) {
+            $('.nav-tabs a[href="'+ previousPageHash +'"]').tab('show');
+          }
+        }
+
+      }
+      
+      window.onbeforeunload = function(event) {
+        if (window.location.hash) {
+          sessionStorage.setItem('previousPageHash', window.location.hash);
+        }
+      }
+
+      $('.nav-tabs a').on('shown.bs.tab', function (e) {
+          sessionStorage.setItem('previousPageHash', e.target.hash);
+      });
+
+      let previousPageHash = sessionStorage.getItem('previousPageHash');
+      if (previousPageHash && $('.nav-tabs a').length > 0) {
+        $('.nav-tabs a[href="'+ previousPageHash +'"]').tab('show');
+      }
+    </script>
+<script>
+      $(document).ready(function() {
+        let queryStr = document.URL.split('?')[1];
+        let urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.has('q')) {
+          
+          let prevUrl = document.referrer;
+          const versionRegex = /https:\/\/docs\.yugabyte\.com\/(v\d+\.\d+|latest)\//i;
+          const m = versionRegex.exec(prevUrl);
+          
+          
+          let searchVersion = 'latest';
+          if (m && m[1] && prevUrl) {
+            searchVersion = m[1];
+          }
+
+          let client = algoliasearch('BH4D9OD16A', '12bc78d612b87db0163597f245889f18');
+          let index = client.initIndex('yugabyte');
+          index.search({
+            query: urlParams.get('q'),
+            filters: `version:${searchVersion}`,
+          }, function(err, content) {
+            let formattedHits = docsearch.formatHits(content.hits);
+            let previousResult = null;
+            let collatedResults = [];
+            formattedHits.forEach(hit => {
+              if (!hit.category || !hit.title) return;
+              if (!previousResult || previousResult.category !== hit.category) {
+                previousResult = {
+                  category: hit.category,
+                  hits: [],
+                  url: hit.url
+                };
+                collatedResults.push(previousResult);
+              }
+              hit.text = hit.title
+                .replace(hit.category, '')
+                .replace('<span class="aa-suggestion-title-separator" aria-hidden="true"> › </span>', '');
+              if (hit.text) {
+                const previousHit = previousResult.hits[previousResult.hits.length - 1];
+                if (!previousHit || previousHit.text !== hit.text) {
+                  previousResult.hits.push(hit);
+                }
+              }
+            });
+            $('#search-results').append(collatedResults.map(result => (
+              '<div class="search-result">\
+                <div class="search-title">\
+                  <a href="' + result.url + '">' + result.category + '</a>\
+                </div>\
+                <div class="search-text">' +
+                result.hits.map(hit => (
+                  '<p>' + hit.text + ' <a href="' + hit.url + '">[more&hellip;]</a></p>'
+                )).join('') +
+              '</div></div>'
+            )).join(''));
+            $('#side-navigation').trigger('sticky_kit:recalc');
+          });
+        }
+      });
+    </script>
+</body>
+</html>
+<script>
+	const pageConfig = {
+		isTocNested:  true ,
+		showAsideToc:  true 
+	}
+</script>
