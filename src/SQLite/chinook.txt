@@ -1,0 +1,62 @@
+--Вывести альбомы и их исполнителей. 
+select albums.title, artists.name 
+from albums join artists;
+
+--Вывести название самой короткой и самой длинной фонограммы
+SELECT MIN(LENGTH(name)), name AS shortest_name
+FROM tracks;
+
+SELECT MAX(LENGTH(name)), name AS longest_name
+FROM tracks;
+
+--Вывести названия альбомов и количество треков
+SELECT title FROM albums;
+SELECT trackid FROM tracks;
+
+--Вывести название трека, которое включает слово 'Man'
+SELECT Name FROM tracks
+WHERE Name LIKE '%Man%';
+
+
+--Вывести альбомы продолжительностью более 2 часов 
+select name from albums
+where tracks.milliseconds > 7200000;
+
+--Вывести названия альбомов, в которые входит слово 'Princess'
+SELECT Title FROM albums
+WHERE Title LIKE '%Princess%';
+
+--Вывести названия альбомов, имя композитора которых включает 'Smith'
+SELECT title FROM albums 
+WHERE artists.name LIKE '%Smith%';
+
+--Вывести исполнителей безымянных альбомов
+SELECT name FROM artists WHERE artists NOT IN (SELECT artists FROM albums);
+
+--Вывести треки, названия альбомов группы 'AC/DC'
+SELECT name, title FROM tracks JOIN albums 
+ON tracks.albumid = albums.albumid JOIN artists 
+ON albums.artistid = artists.artistid 
+WHERE artists.name = 'AC/DC';
+
+
+https://www.sqlitetutorial.net/sqlite-sample-database/
+Вывести покупателей, не указавших свою компанию
+Вывести название самой короткой и самой длинной фонограммы
+Вывести названия альбомов, имя композитора которых включает 'Smith'
+Вывести названия альбомов, в которые входит слово 'Princess'
+Вывести название альбома с самым длинным списком композиторов
+Вывести все счета об оплате за январь 2010 г.
+Для исполнителя 'Queen' вывести название трека и альбома
+Вывести название трека, которое включает слово 'Man'
+Вывести 10 треков, название которых заканчивается цифрами
+Вывести альбомы и их исполнителей. 
+Вывести исполнителей безымянных альбомов
+Вывести треки, названия альбомов группы 'AC/DC'
+Вывести список исполнителей, не имеющих альбомов
+Вывести список служащих, живущих в одинаковых городах (земляков). Использовать self join.
+Вывести названия альбомов и количество треков
+Для каждого альбома вывести минимальную, максимальную и среднюю продолжительность треков
+Количество треков по типу медиа и по жанрам
+Вывести альбомы продолжительностью более 2 часов 
+
