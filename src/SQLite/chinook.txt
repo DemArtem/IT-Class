@@ -1,43 +1,46 @@
 --Вывести альбомы и их исполнителей. 
-select albums.title, artists.name 
-from albums join artists;
+select alb.title, art.name
+from albums as alb join artists as art
+on alb.ArtistId = art.ArtistId;
 
 --Вывести название самой короткой и самой длинной фонограммы
-SELECT MIN(LENGTH(name)), name AS shortest_name
-FROM tracks;
-
-SELECT MAX(LENGTH(name)), name AS longest_name
-FROM tracks;
+SELECT name
+FROM tracks where Milliseconds = (select MIN(Milliseconds) from tracks)
+or Milliseconds = (select MAX(Milliseconds) from tracks t);
 
 --Вывести названия альбомов и количество треков
-SELECT title FROM albums;
-SELECT trackid FROM tracks;
+SELECT a.Title, COUNT(*) from albums a join tracks t
+on a.AlbumId = t.AlbumId GROUP BY a.Title;
 
 --Вывести название трека, которое включает слово 'Man'
 SELECT Name FROM tracks
 WHERE Name LIKE '%Man%';
 
-
---Вывести альбомы продолжительностью более 2 часов 
-select name from albums
-where tracks.milliseconds > 7200000;
+--Вывести альбомы продолжительностью более 2 часов
+select a.Title, SUM(t.Milliseconds) from albums a join tracks t
+on a.AlbumId = t.TrackId GROUP BY a.Title HAVING SUM(t.Milliseconds) > 7200000
 
 --Вывести названия альбомов, в которые входит слово 'Princess'
 SELECT Title FROM albums
 WHERE Title LIKE '%Princess%';
 
 --Вывести названия альбомов, имя композитора которых включает 'Smith'
-SELECT title FROM albums 
-WHERE artists.name LIKE '%Smith%';
+SELECT a.Title FROM albums a join artists art
+on a.ArtistId = art.ArtistId where art.Name LIKE "%Smith%";
 
 --Вывести исполнителей безымянных альбомов
-SELECT name FROM artists WHERE artists NOT IN (SELECT artists FROM albums);
+SELECT art.name FROM artists art left join albums alb
+on art.ArtistId = alb.ArtistId where alb.ArtistId IS NULL ;
 
 --Вывести треки, названия альбомов группы 'AC/DC'
-SELECT name, title FROM tracks JOIN albums 
-ON tracks.albumid = albums.albumid JOIN artists 
-ON albums.artistid = artists.artistid 
-WHERE artists.name = 'AC/DC';
+SELECT t.Name, alb.Title from albums alb join tracks t
+on alb.AlbumId = t.TrackId join artists art
+on alb.ArtistId = art.ArtistId where art.Name = "AC/DC";
+
+--Для исполнителя 'Queen' вывести название трека и альбома
+SELECT t.Name, alb.Title from albums alb join tracks t
+on alb.AlbumId = t.TrackId JOIN artists art
+on alb.ArtistId = art.ArtistId where art.Name = "Queen";
 
 
 https://www.sqlitetutorial.net/sqlite-sample-database/
