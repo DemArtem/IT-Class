@@ -1,4 +1,4 @@
-package _Java.Examples;
+package _Java.Examples.Cicles;
 
 import java.util.Scanner;
 

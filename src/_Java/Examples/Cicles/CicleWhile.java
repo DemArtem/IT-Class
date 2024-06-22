@@ -1,4 +1,4 @@
-package _Java.Examples;
+package _Java.Examples.Cicles;
 
 public class CicleWhile {
     public static void main(String[] args) {
